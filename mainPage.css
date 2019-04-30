@@ -1,8 +1,17 @@
 body{
-	font-family: 'Source code pro', Calibri, serif;
+	font-family: Arial, Helvetica, sans-serif;
 	margin: 0px;
 	padding: 0px;
-	background: #f2f6e9;
+	background: #C8D8EA;
+}
+
+.ronds{
+	border-radius: 50%;
+	border: solid 8px #353E47;
+}
+
+.row a {
+	cursor: pointer;
 }
 
 .bd-placeholder-img {
@@ -20,14 +29,168 @@ body{
     }
 }
 
+.btn {
+	padding: 15px;
+}
+
 .col-lg-6 {
 	text-align: center;
 }
 
 .row {
-	margin-top: 50px;
+	margin-top: 30px;
 }
 
-.nav-item {
-	margin-left: 20px;
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 0px;
+  overflow: auto;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  	box-sizing: border-box;
+  	width: 25%;
+  	padding: 12px 20px;
+  	margin: 8px 0;
+  	display: inline-block;
+  	border: 1px solid #ccc;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image */
+.imgcontainer {
+  text-align: center;
+  margin: 12px 0 6px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 20px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+.submit {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 120px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+#login:hover {
+  background-color: #f1f1f1;
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+
+.overlay-image .hover {
+  position: absolute;
+  /*bottom: 0;
+  left: 0;
+  right: 0;*/
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /*overflow: visible;*/
+  width: 50%;
+  height: 85%;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  border-radius: 50%;
+}
+
+.hover{
+	margin-left: 130px;
+}
+
+.overlay-image a:hover .hover{
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+
+.text {
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
