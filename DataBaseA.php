@@ -25,7 +25,28 @@ $database  = "AMAZON";
 $db_handle = mysqli_connect('localhost', 'root', 'root');
 $db_found  = mysqli_select_db($db_handle, $database);
 
-if (isset($_POST["button2"])) {
+$error ="";
+
+	if($nom ==""){$error .= "Nom vide<br/>";}
+	if($prenom ==""){$error .= "Prenom vide<br/>";}
+	if($identifiant ==""){$error .= "identifiant vide<br/>";}
+	if($email ==""){$error .= "email vide<br/>";}
+	if($mdp ==""){$error .= "mdp vide<br/>";}
+	if($villeu ==""){$error .= "villeu vide<br/>";}
+	if($cpu ==""){$error .= "cpu vide<br/>";}
+	if($adresseu ==""){$error .= "adresseu vide<br/>";}
+	if($villel ==""){$error .= "Ville L vide<br/>";}
+	if($cpl ==""){$error .= "cpl vide <br/>";}
+	if($adressel ==""){$error .= "adresse L vide<br/>";}
+	if($typecarte ==""){$error .= "Type carte vide <br/>";}
+	if($numcarte ==""){$error .= "Num carte vide<br/>";}
+	if($nomcarte ==""){$error .= "Nom carte vide<br/>";}
+	if($dateexpi ==""){$error .= "Date Expi vide<br/>";}
+	if($codesecu ==""){$error .= "Code secu vide<br/>";}
+
+	if($error ==""){
+
+		if (isset($_POST["button2"])) {
 
     
     if ($db_found) {
@@ -93,6 +114,15 @@ echo "<br>";
         echo "Database not found";
     }
 }
+		echo "formulaire valide";
+	}
+	else{
+		echo "Erreur : $error";
+	}
+
+
+
+
 
 
 //fermer la connexion
