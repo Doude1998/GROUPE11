@@ -1,0 +1,33 @@
+body{
+	font-family: 'Source code pro', Calibri, serif;
+	margin: 0px;
+	padding: 0px;
+	background: #f2f6e9;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+	    font-size: 3.5rem;
+    }
+}
+
+.col-lg-6 {
+	text-align: center;
+}
+
+.row {
+	margin-top: 50px;
+}
+
+.nav-item {
+	margin-left: 20px;
+}
