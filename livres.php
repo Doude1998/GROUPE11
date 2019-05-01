@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="mainPage.css" rel="stylesheet">
-    <script type="text/javascript" src="mainPage.js.js"></script>
+    <link href="item.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -92,75 +92,7 @@
   	</nav>
 </header>
 
-
-<!--FORMULAIRE DE CONNECTION ACHETEUR-->
-<div id="id01" class="modal">
-  	<form class="modal-content animate" action="login.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
-      		<input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
-
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-      		<button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-    		<label>
-        		<input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-      		</label><br>
-    	</div>
-    	<span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
-</div>
-
-<!--FORMULAIRE D'INSCRIPTION ACHETEUR-->
-<div id="id02" class="modal">
-  	<form class="modal-content animate" action="inscrireAcheteur.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Nom"><b>Nom</b></label><br>
-      		<input type="text" placeholder="Nom" name="Nom" required><br>
-
-      		<label for="Prenom"><b>Prénom</b></label><br>
-      		<input type="text" placeholder="Prénom" name="Prenom" required><br><br>
-
-      		<label for="Identifiant"><b>Identifiant</b></label><br>
-      		<input type="text" placeholder="Identifiant" name="Identifiant" required><br><br>
-
-      		<label for="Email"><b>E-mail</b></label><br>
-      		<input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
-      		
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-      		
-      		<label for="VilleU"><b>Ville</b></label><br>
-      		<input type="text" placeholder="Ville" name="VilleU" required><br><br>
-      		
-      		<label for="CPU"><b>Code Postal</b></label><br>
-      		<input type="text" placeholder="XX XXX" name="CPU" required><br><br>
-      		
-      		<label for="AdresseU"><b>Adresse</b></label><br>
-      		<input type="text" placeholder="N° et rue" name="AdresseU" required><br><br>
-        
-      		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
-    	</div>
-    </form>
-</div>
-
-<!-- Body de la page -->
-<body>
-
-<h2>Livres</h2>
+<h3>Livres</h3>
 
 
 
@@ -177,34 +109,48 @@ $db_handle = mysqli_connect('localhost', 'root', 'root' );
 $db_found = mysqli_select_db($db_handle, $database);
  //si le BDD existe, faire le traitement
 if ($db_found) {
- $sql = "SELECT * FROM Item";
+ $sql = "SELECT * FROM Item WHERE Categorie LIKE '%Livres%'";
+
  $result = mysqli_query($db_handle, $sql);
+
  while ($data = mysqli_fetch_assoc($result)) {
+
  
 ?>
+
  	<tr>
-		<td>
-		 <img src = "<?php echo  $data['Photo1'];?>" alt = "img">
-		</td>
-	</tr>
- 	<tr>
- 		<td>
-			<?php echo  $data['Vendeur'] . '<br>';?> <br>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<?php echo  $data['Prix'] . '<br>';?> 
-			<br><br><br><br><br>
- 		</td>
-	</tr>
+		   <td>
+        <br><br><br><br>
+            
+            <img id = "<?php echo $var;?>" src = " <?php echo  $data['Photo1'];?>">  
+           <td class =" titre">
+              <?php echo  $data['Titre'] . '<br>';?> <br>
+            </td>
+
+            <td class="vendeur"> Vendeur: 
+             <?php echo  $data['Vendeur'] . '<br>';?>  <br>
+            </td>  
+
+            <td class = "prix">Prix: 
+             <?php echo  $data['Prix'] . '<br>';?> <br>
+            </td>       
+
+            
+            
+     </td>
+       
+        <td><br><br><br><br><br><br><br><br><br><br><br></td>     
+	   </tr>
 
 
-	
 
 <?php
- }//end while
 
+
+ }//end while
+?>
+
+<?php
 }//end if
 //si le BDD n'existe pas
 else {
@@ -218,8 +164,6 @@ mysqli_close($db_handle);
 </table>
 	
 
-
-</body>
 
   <!-- FOOTER -->
   <footer class="container">
