@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="mainPage.css" rel="stylesheet">
+    <link href="connectPage.css" rel="stylesheet">
 </head>
 
 <body>
@@ -61,8 +61,9 @@
           </li>
 
           <li>
+            <div id="UtilisateurConnecte">
             <?php
-              $database = "amazon";
+              $database = "AMAZON";
   
               $db_handle = mysqli_connect('localhost', 'root', 'root');
               $db_found  = mysqli_select_db($db_handle, $database);
@@ -74,13 +75,28 @@
                 $sql .= " WHERE Connecte LIKE '%oui%'";
 
                 $result = mysqli_query($db_handle, $sql);
+                
+                //regarder s'il y a de résultat
+                if (mysqli_num_rows($result) == 0) {
+                  $sql = "SELECT * FROM Vendeur";
 
-                while ($data = mysqli_fetch_assoc($result)) {
+                  //on cherche le livre avec les paramètres titre et auteur
+                  $sql .= " WHERE Connecte LIKE '%oui%'";
 
-                  echo "Bienvenu(e)" . $data['Identifiant'];
+                  $result = mysqli_query($db_handle, $sql);
+
+                  while ($data = mysqli_fetch_assoc($result)) {
+                    echo "Bienvenu(e)  " . $data['Pseudo'] . " !";
+                  }
+                }
+                else {
+                  while ($data = mysqli_fetch_assoc($result)) {
+                    echo "Bienvenu(e)  " . $data['Identifiant'] . " !";
+                  }
+                }
               }
-            }
             ?>
+            </div>
           </li>
 
           </ul>
