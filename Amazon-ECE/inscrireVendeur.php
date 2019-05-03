@@ -3,7 +3,7 @@
     //le parametre de $_POST = "name" de <input> de votre page HTML
     $nom   = isset($_POST["Nom"]) ? $_POST["Nom"] : "";
     $prenom  = isset($_POST["Prenom"]) ? $_POST["Prenom"] : "";
-    $pseudo   = isset($_POST["Pseudo"]) ? $_POST["Pseudo"] : "";
+    $pseudo  = isset($_POST["Pseudo"]) ? $_POST["Pseudo"] : "";
     $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
     $mdp   = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
     $ville   = isset($_POST["Ville"]) ? $_POST["Ville"] : "";
@@ -32,11 +32,12 @@
             $result = mysqli_query($db_handle, $sql);
 
             //regarder s'il y a un résultat
-            if (mysqli_num_rows($result) == 0){ 
+            if (mysqli_num_rows($result) == 0){
                 $sql  = "INSERT INTO Vendeur (Nom, Prenom, Pseudo, Email, MDP, Ville, CP, Adresse, BIC, IBAN, Connecte)
                 VALUES ('$nom','$prenom', '$pseudo','$email','$mdp','$ville','$cp','$adresse', '$bic','$iban', 'oui') ";
                 $result = mysqli_query($db_handle, $sql);
-                header('Location: connectPage.php');
+                header('Location: connectPageV.php');
+            }
             else { 
                 //le livre est déjà dans la BDD
                 ?>

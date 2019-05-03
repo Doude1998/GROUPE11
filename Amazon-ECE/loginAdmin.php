@@ -1,33 +1,35 @@
 <?php
-  $identifiant   = isset($_POST["Pseudo"]) ? $_POST["Pseudo"] : "";
-  $mdp = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
+	$pseudo   = isset($_POST["Pseudo"]) ? $_POST["Pseudo"] : "";
+	$mdp = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
 
   //connexion à la base de données
   //identifier votre BDD
-  $database  = "amazon";
-
+  $database  = "AMAZON";
+  
   //connectez-vous dans votre BDD
   $db_handle = mysqli_connect('localhost', 'root', 'root');
   $db_found  = mysqli_select_db($db_handle, $database);
 
+
   if(isset($_POST["Login"])){
-    
+
     if($db_found){
-
-      $sql = "SELECT * FROM Vendeur";
+    	$sql = "SELECT * FROM Admin";
       
-      if ($identifiant != "") {
-        //on cherche le livre avec les paramètres titre et auteur
-        $sql .= " WHERE Pseudo LIKE '%$identifiant%'";
-      }
-      if ($mdp != "") {
-        $sql .= " AND MDP LIKE '%$mdp%'";
-      }
+	    if ($pseudo != "") {
+        
+        	//on cherche le livre avec les paramètres titre et auteur
+        	$sql .= " WHERE Pseudo LIKE '%$pseudo%'";
+      	}
+      	
+      	if ($mdp != "") {
+        	$sql .= " AND MDP LIKE '%$mdp%'";
+      	}
     
-      $result = mysqli_query($db_handle, $sql);
+      	$result = mysqli_query($db_handle, $sql);
 
-      //regarder s'il y a de résultat
-      if (mysqli_num_rows($result) == 0) {
+      	//regarder s'il y a de résultat
+      	if (mysqli_num_rows($result) == 0) {
         //le livre est déjà dans la BDD
                 ?>
                 <style type="text/css">
@@ -57,17 +59,17 @@
                         margin-left: 43%;
                     }
                 </style>
-                <h2>Vous n'avez pas encore de compte chez nous.. <br> Inscrivez-vous dès maintenant !</h2>
+                <h2>Vous n'êtes pas administrateur chez nous !</h2>
                 <div><a href="mainPage.html">Retour</a></div>
                 
-                <?php    
+                <?php 
       }
-      
       else {
-        while ($data = mysqli_fetch_assoc($result)) {
-          $sql ="UPDATE Vendeur SET Connecte='oui' WHERE Pseudo='$identifiant'";
+
+         while ($data = mysqli_fetch_assoc($result)) {
+          $sql ="UPDATE Admin SET Connecte='oui' WHERE Pseudo='$pseudo'";
           $result = mysqli_query($db_handle, $sql);
-          header('Location: connectPageV.php');
+          header('Location: connectPageAdmin.php');
         }
       }
     }

@@ -111,7 +111,7 @@
 
 	//si le BDD existe, faire le traitement
 	if ($db_found) {
-		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Livres%'";
+		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Musique%'";
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
  

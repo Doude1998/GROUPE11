@@ -67,6 +67,35 @@ hr{
   border: 4px solid grey;
 }
 
+
+/*////////    IMAGES //////*/
+.zoom {
+  width: 400px;
+  height: 300px;
+}
+
+.image{
+  text-align: center;
+}
+
+.image img {
+/* La transition s'applique à la fois sur la largeur et la hauteur, avec une durée d'une seconde. */
+-webkit-transition: all 1s ease; /* Safari et Chrome */
+transition: all 1s ease;
+border: solid 1px grey;
+border-radius: 10px;
+width: 110px;
+margin-top: 25px;
+margin-right: 20px;
+}
+
+.image img:hover {
+/* L'image est grossie de 25% */
+-webkit-transform:scale(3); /* Safari et Chrome */
+transform:scale(3);
+cursor: pointer;
+}
+
 /*/////////////   FORMULAIRES   /////////////////////////*/
 
 /* The Modal (background) */
@@ -104,11 +133,6 @@ input[type=text], input[type=password] {
   text-align: center;
   margin: 12px 0 6px 0;
   position: relative;
-}
-
-#test img{
-  border: solid 3px grey;
-  border-radius: 20%;
 }
 
 img.avatar {

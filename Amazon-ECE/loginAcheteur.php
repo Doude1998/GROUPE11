@@ -67,7 +67,7 @@
          while ($data = mysqli_fetch_assoc($result)) {
           $sql ="UPDATE Acheteur SET Connecte='oui' WHERE Identifiant='$identifiant'";
           $result = mysqli_query($db_handle, $sql);
-          header('Location: connectPage.php');
+          header('Location: connectPageA.php');
         }
       }
     }

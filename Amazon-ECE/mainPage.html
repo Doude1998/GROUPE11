@@ -83,7 +83,7 @@
         	</ul>
         	<ul class="navbar-nav float-right">
         		<li class="nav-item">
-        			<a href="admin.php" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
+        			<a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
         		</li>
         		<li class="nav-item ml-4">
         			<a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
@@ -115,6 +115,31 @@
       		</label><br>
     	</div>
     	<span><a href="#">Mot de passe oublié ?</a></span>
+    </form>
+</div>
+
+<!--FORMULAIRE DE CONNECTION ADMIN-->
+<div id="id05" class="modal">
+    <form class="modal-content animate" action="loginAdmin.php" method="POST">
+
+      <div class="imgcontainer">
+          <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="img/icone.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
+          <input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
+
+          <label for="MDP"><b>Mot de passe</b></label><br>
+          <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+        
+          <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+          </label><br>
+      </div>
+      <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
 
@@ -198,8 +223,8 @@
       		<label for="Prenom"><b>Prénom</b></label><br>
       		<input type="text" placeholder="Prénom" name="Prenom" required><br><br>
 
-      		<label for="Pseudo"><b>Identifiant</b></label><br>
-      		<input type="text" placeholder="Identifiant" name="Pseudo" required><br><br>
+      		<label for="Pseudo"><b>Pseudo</b></label><br>
+      		<input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
 
       		<label for="Email"><b>E-mail</b></label><br>
       		<input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>

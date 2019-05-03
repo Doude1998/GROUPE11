@@ -13,6 +13,10 @@
     $sql = "UPDATE Vendeur SET Connecte='non' WHERE Connecte='oui'";
     $result = mysqli_query($db_handle, $sql);
 
+    $sql = "SELECT * FROM Admin";
+    $sql = "UPDATE Admin SET Connecte='non' WHERE Connecte='oui'";
+    $result = mysqli_query($db_handle, $sql);
+
     header('Location: mainPage.html');
   }
 ?>

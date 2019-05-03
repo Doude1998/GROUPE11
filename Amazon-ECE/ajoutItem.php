@@ -1,14 +1,15 @@
 <?php
+
     //recuperer les données venant de la page HTML
     //le parametre de $_POST = "name" de <input> de votre page HTML
-    $nom   = isset($_POST["Nom"]) ? $_POST["Nom"] : "";
-    $prenom  = isset($_POST["Prenom"]) ? $_POST["Prenom"] : "";
-    $identifiant   = isset($_POST["Identifiant"]) ? $_POST["Identifiant"] : "";
-    $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
-    $mdp   = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
-    $villeu   = isset($_POST["VilleU"]) ? $_POST["VilleU"] : "";
-    $cpu   = isset($_POST["CPU"]) ? $_POST["CPU"] : "";
-    $adresseu   = isset($_POST["AdresseU"]) ? $_POST["AdresseU"] : "";
+    $titre   = isset($_POST["Titre"]) ? $_POST["Titre"] : "";
+    $description  = isset($_POST["Description"]) ? $_POST["Description"] : "";
+    $prix   = isset($_POST["Prix"]) ? $_POST["Prix"] : "";
+    $prix;
+    $categorie   = isset($_POST["Categorie"]) ? $_POST["Categorie"] : "";
+    $image1   = isset($_POST["image1"]) ? $_POST["image1"] : "";
+    $image2   = isset($_POST["image2"]) ? $_POST["image2"] : "";
+    $image3   = isset($_POST["image3"]) ? $_POST["image3"] : "";
 
     //identifier votre BDD
     $database  = "AMAZON";
@@ -20,21 +21,36 @@
     if (isset($_POST["Create"])) {
     
         if ($db_found) {
-    		$sql = "SELECT * FROM Acheteur";
-            if ($identifiant != "") {
+    		$sql = "SELECT * FROM Item";
+            if ($titre != "") {
                 //on cherche le livre avec les paramètres titre et auteur
-                $sql .= " WHERE Identifiant LIKE '%$identifiant%'";
+                $sql .= " WHERE Titre LIKE '%$titre%'";                
             }
             
             $result = mysqli_query($db_handle, $sql);
             
             //regarder s'il y a de résultat
-            if (mysqli_num_rows($result) == 0){ 
-                
-                $sql  = "INSERT INTO Acheteur (Nom, Prenom, Identifiant, Email, MDP, VilleU, CPU,AdressU,VilleL,CPL, AdresseL,TypeC,NumeroCarte, NomCarte,DateExpiration, CodeSecu, Connecte)
-                VALUES ('$nom','$prenom', '$identifiant','$email','$mdp','$villeu','$cpu','$adresseu','VilleL','CPL','AdresseL','TypeC','NumeroCarte','NomCarte','DateExpiratione','CodeSecu', 'oui') ";
+            if (mysqli_num_rows($result) == 0){
+
+            	$sql  = "INSERT INTO Item (Categorie, Vendeur, Titre, Description, Photo1, Photo2, Photo3, Taille, Couleur, Prix)
+                VALUES ('$categorie','$vendeur', '$titre','$description','$image1','$image2','$image3','$taille','$couleur','$prix')";
+                $result = mysqli_query($db_handle, $sql);           	
+
+            	$sql = "SELECT * FROM Vendeur";
+
+                //on cherche le livre avec les paramètres titre et auteur
+                $sql .= " WHERE Connecte LIKE '%oui%'";
+
                 $result = mysqli_query($db_handle, $sql);
-                header('Location: connectPageA.php');
+
+                while ($data = mysqli_fetch_assoc($result)) {
+                    $vendeur = $data['Prenom'] . " " . $data['Nom'];
+
+                    $sql = "SELECT * FROM Item";
+    				$sql = "UPDATE Item SET Vendeur='$vendeur' WHERE Vendeur=''";
+    				$result = mysqli_query($db_handle, $sql);
+    				header('Location: connectPageV.php');
+                }
             }
             else {
                 //le livre est déjà dans la BDD
@@ -65,8 +81,8 @@
                         width: 100%;
                     }
                 </style>
-                <h2>Identifiant déjà utilisé !</h2>
-                <div><a href="mainPage.html">Retour</a></div>
+                <h2>Ce livre est déjà en vente !</h2>
+                <div><a href="connectPageV.php">Retour</a></div>
                 <?php
             }
         }
