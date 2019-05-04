@@ -25,11 +25,47 @@
   
     #UtilisateurConnecte {
       margin-left: 100px;
-      margin-top: 10px;
       font-size: 20px;
       font-style: oblique;
       color: white;
       background-color: rgba(0, 0, 0, 0);
+    }
+
+    #profil{
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: solid 2px grey;
+      margin-left: 20px;
+    }
+
+    .poupou{
+      text-shadow: black 1px 1px, black -1px 1px, black -1px -1px, black 1px -1px;
+      color: white;
+
+    }
+    <?php
+      $database = "AMAZON";
+  
+      $db_handle = mysqli_connect('localhost', 'root', 'root');
+      $db_found  = mysqli_select_db($db_handle, $database);
+
+      if($db_found){
+        $sql = "SELECT * FROM Vendeur";
+
+        //on cherche le livre avec les paramètres titre et auteur
+        $sql .= " WHERE Connecte LIKE '%oui%'";
+
+        $result = mysqli_query($db_handle, $sql);
+
+        while ($data = mysqli_fetch_assoc($result)) {
+          $fond = $data['Fond'];
+        }
+      }
+    ?>
+
+    body{
+      background-image: url("img/<?php echo  $fond;?>");
     }
   
   </style>
@@ -40,7 +76,7 @@
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="connectPage.php">ECE Amazon</a>
+      <a class="navbar-brand" href="connectPageV.php">ECE Amazon</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -67,11 +103,16 @@
                 $result = mysqli_query($db_handle, $sql);
 
                 while ($data = mysqli_fetch_assoc($result)) {
+                  $profil = $data['Profil'];
                     echo "Bienvenu(e)  " . $data['Pseudo'] . " !";
                 }
               }
             ?>
+            <p style="font-size: 14px;" >Connecté(e) en tant que  Vendeur/euse</p>
             </div>
+          </li>
+          <li>
+            <img id="profil" src="img/<?php echo  $profil;?>" >
           </li>
 
           </ul>
@@ -84,11 +125,8 @@
     </nav>
 </header>
 
-
 <main role="main">
-
   <div class="container marketing">
-
     <div class="row">
       <div class="col-lg-6">
         <div class="overlay-image">
@@ -99,10 +137,22 @@
             </div>
           </a>
         </div>        
-          <h2>Vendre un produit</h2>
+          <h2 class="poupou" >Vendre un produit</h2>
       </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
-   </div>
+      
+      <div class="col-lg-6">
+        <div class="overlay-image">
+          <a onclick="document.getElementById('id02').style.display='block'">
+            <img class="ronds" src="img/sup.png" alt="sup">
+            <div class="hover col-lg-6">
+              <div class="text">Supprimer un produit</div>
+            </div>
+          </a>
+        </div>        
+          <h2 class="poupou" >Supprimer un produit</h2>
+      </div><!-- /.col-lg-4 -->
+    </div>  
+  </div>
 </main>
 
 <!--FORMULAIRE D'AJOUT ITEM-->
@@ -115,7 +165,7 @@
     	</div>
 
     	<div class="container">
-    		<label for="Titre"><b>Titre</b></label><br>
+    		  <label for="Titre"><b>Titre</b></label><br>
       		<input type="text" placeholder="Titre" name="Titre" required><br>
 
       		<label for="Description"><b>Description</b></label><br>
@@ -123,6 +173,9 @@
 
       		<label for="Prix"><b>Prix</b></label><br>
       		<input type="number" placeholder="Prix" name="Prix" required> €<br><br>
+
+          <label for="Stock"><b>Quantité</b></label><br>
+          <input type="number" placeholder="Stock" name="Stock" required><br><br>
 
       		<label for="Categorie"><b>Catégorie</b></label><br>
       		<select size="1" name="Categorie" required>
@@ -133,13 +186,51 @@
   				<option value="Sport">Sport et Loisir</option>
 			</select><br><br>
 
-			<label for="images">Ajoutez au moins une image</label><br>
+			<label for="images">Ajoutez des images</label><br>
 			<input type="file" name="image1" required>
-			<input type="file" name="image2">
-			<input type="file" name="image3"><br><br>
+			<input type="file" name="image2" required>
+			<input type="file" name="image3" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Ajouter mon produit</button><br><br>
     	</div>
+    </form>
+</div>
+
+<!--FORMULAIRE DE SUPPRESSION ITEM-->
+<div class="modal" id="id02">
+    <form class="modal-content animate" action="deleteItem.php.">
+      <div class="imgcontainer">
+          <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+      <h4>Vos articles en vente :</h4><br><br>
+      <?php
+        $database  = "AMAZON";
+
+        //connectez-vous dans votre BDD
+        $db_handle = mysqli_connect('localhost', 'root', 'root');
+        $db_found  = mysqli_select_db($db_handle, $database);
+
+        $sql = "SELECT * FROM Vendeur";
+
+        //on cherche le livre avec les paramètres titre et auteur
+        $sql .= " WHERE Connecte LIKE '%oui%'";
+        $result = mysqli_query($db_handle, $sql);
+
+        while ($data = mysqli_fetch_assoc($result)) {
+          $vendeur = $data['Prenom'] . " " . $data['Nom'];
+
+          $sql = "SELECT * FROM Item WHERE Vendeur LIKE '%$vendeur%'";
+          $result = mysqli_query($db_handle, $sql);
+
+          while ($data = mysqli_fetch_assoc($result)) {
+            echo $data['Titre'] . "<br> Catégorie : " . $data['Categorie'];
+            ?>
+              <a class="btn" href="deleteItem.php?id=<?php echo $data['Id']; ?>" role="button">Sup</a>
+              <br><br>
+            <?php
+          }
+        }
+      ?>
     </form>
 </div>
 <hr>

@@ -24,77 +24,85 @@
     <!-- Custom styles for this template -->
     <link href="item.css" rel="stylesheet">
 
+    <style type="text/css">
+      #utilisateurconnecte{
+        margin-left: 100px;
+        font-size: 20px;
+        font-style: oblique;
+        color: white;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    </style>
+
 
 </head>
 
 <body>
 
 	<header>
-  	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    	<a class="navbar-brand" href="mainPage.html">ECE Amazon</a>
-    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-    		<span class="navbar-toggler-icon"></span>
-    	</button>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="connectPageAdmin.php">ECE Amazon</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-	    <div class="collapse navbar-collapse" id="navbarCollapse">
 
-    		<ul class="navbar-nav ml-5">
-				<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <a class="dropdown-item" href="livres.php">Livres</a>
-			    			<a class="dropdown-item" href="musique.php">Musiques</a>
-    						<a class="dropdown-item" href="vet.php">Vêtements</a>
-    						<a class="dropdown-item" href="sport.php">Sports et loisirs</a>
-  						</div>
-					</div>
-        		</li>
-        		
-        		<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventes flash</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <a class="dropdown-item" href="livresF.php">Livres</a>
-			    			<a class="dropdown-item" href="musiqueF.php">Musiques</a>
-    						<a class="dropdown-item" href="vetF.php">Vêtements</a>
-    						<a class="dropdown-item" href="sportF.php">Sports et loisirs</a>
-  						</div>
-					</div>
-        		</li>
 
-        		<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendre</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
-			    			<button onclick="document.getElementById('id04').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
-  						</div>
-					</div>
-        		</li>
-        		<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre compte</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
-			    			<button onclick="document.getElementById('id02').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
-  						</div>
-					</div>
-        		</li>
-        	</ul>
-        	<ul class="navbar-nav float-right">
-        		<li class="nav-item">
-              <a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <ul class="navbar-nav ml-5">
+          <li class="nav-item ml-4">
+            <div class="dropdown">
+              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="livresConnectA.php">Livres</a>
+                <a class="dropdown-item" href="musiqueConnectA.php">Musique</a>
+                <a class="dropdown-item" href="vetConnectA.php">Vêtements</a>
+                <a class="dropdown-item" href="sportConnectA.php">Sports et loisirs</a>
+              </div>
+            </div>
+          </li>
+            
+          <li class="nav-item ml-4">
+              <a class="btn btn-secondary" href="ventesFadmin.php" role="button">Ventes Flash</a>
+          </li>
+
+          <li>
+            <div id="utilisateurconnecte">
+            <?php
+              $database = "AMAZON";
+  
+              $db_handle = mysqli_connect('localhost', 'root', 'root');
+              $db_found  = mysqli_select_db($db_handle, $database);
+
+              if($db_found){
+                $sql = "SELECT * FROM Admin";
+
+                //on cherche le livre avec les paramètres titre et auteur
+                $sql .= " WHERE Connecte LIKE '%oui%'";
+
+                $result = mysqli_query($db_handle, $sql);
+
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo "Bienvenu(e)  " . $data['Pseudo'] . " !";
+                }
+              }
+            ?>
+            <p style="font-size: 14px;" >Connecté(e) en tant qu'admin</p>
+            </div>
+          </li>
+
+          </ul>
+          <ul class="navbar-nav float-right">
+            <li class="nav-item ml-4">
+              <a href="deconnexion.php" class="btn btn-lg btn-info">Déconnexion  <span class="glyphicon glyphicon-log-out"></span></a>
             </li>
-        		<li class="nav-item ml-4">
-        			<a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-        		</li>
-        	</ul>
-    	</div>
-  	</nav>
+          </ul>
+      </div>
+    </nav>
 </header>
 
-<h1 id="livres">Livres</h1>
+<h1 id="livres">Vêtements</h1>
 <hr>
 
 <!--le code PHP --------->
@@ -111,14 +119,14 @@
 
 	//si le BDD existe, faire le traitement
 	if ($db_found) {
-		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Livres%'";
+		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Vetement%'";
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
  
 			?>
 
 			<div class="row">
-				<div class="col-lg-4">
+        <div class="col-lg-4">
           <div class="zoom">
               <div class="image">
                 <img src="img/<?php echo  $data['Photo1'];?>" >
@@ -131,32 +139,32 @@
           </div>
         </div>
 
-				<div class="col-lg-6">
-					<div class="row" id="titre">
-						<?php echo  $data['Titre'] . '<br>';?>
-					</div>
-					<div class="col">
-						<p id="description">Description : </p>
-						<div class="row">
-							<?php echo  $data['Description'] . '<br>';?>
-						</div>
-					</div>
-					<div class="row">
-						<p id="vendeur">Vendeur : </p>
-						<div class="col">
-							<?php echo  $data['Vendeur'] . '<br>';?>
-						</div>
-					</div>
+        <div class="col-lg-6">
+          <div class="row" id="titre">
+            <?php echo  $data['Titre'] . '<br>';?>
+          </div>
+          <div class="col">
+            <p id="description">Description : </p>
+            <div class="row">
+              <?php echo  $data['Description'] . '<br>';?>
+            </div>
+          </div>
+          <div class="row">
+            <p id="vendeur">Vendeur : </p>
+            <div class="col">
+              <?php echo  $data['Vendeur'] . '<br>';?>
+            </div>
+          </div>
            <div class="col">
                      <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
                   </div>
-				</div>
-				<div class="col-lg-2" id="droite">
-					<div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
+        </div>
+        <div class="col-lg-2" id="droite">
+          <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
           
-					<div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
-				</div>
-			</div>
+          <div class="row"><a class="btnPanier" href="deleteItem.php?id=<?php echo $data['Id']; ?>">Supprimer ce produit</a></div>
+        </div>
+      </div>
 
 			<hr>
 
@@ -222,31 +230,6 @@
       		</label><br>
     	</div>
     	<span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
-</div>
-
-<!--FORMULAIRE DE CONNECTION ADMIN-->
-<div id="id05" class="modal">
-    <form class="modal-content animate" action="loginAdmin.php" method="POST">
-
-      <div class="imgcontainer">
-          <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
-
-      <div class="container">
-        <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
-          <input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
-
-          <label for="MDP"><b>Mot de passe</b></label><br>
-          <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-          <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-          </label><br>
-      </div>
-      <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
 
@@ -328,12 +311,6 @@
       		
       		<label for="IBAN"><b>IBAN :</b></label><br>
       		<input type="text" placeholder="IBAN" name="IBAN" required><br><br>
-
-          <label for="Profil">Photo de profil</label><br>
-          <input type="file" name="Profil" required><br><br>
-
-          <label for="Fond">Photo de fond d'écran</label><br>
-          <input type="file" name="Fond" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>

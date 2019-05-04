@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -10,7 +10,10 @@
     <title>Amazon ECE</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+	<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
 
@@ -20,6 +23,7 @@
 
     <!-- Custom styles for this template -->
     <link href="mainPage.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="item.css">
 
     <style type="text/css">
       #utilisateurconnecte{
@@ -35,7 +39,7 @@
 
 <body>
 
-  <header>
+	<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="connectPageA.php">ECE Amazon</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,69 +105,92 @@
     </nav>
 </header>
 
+<h1 id="livres">Vêtements</h1>
+<hr>
 
-<main role="main">
+<!--le code PHP --------->
+<table>
+ 	
+<?php
+	//identifier le nom de base de données
+	$database = "AMAZON";
+	
+	//connectez-vous dans votre BDD
+	//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
+	$db_handle = mysqli_connect('localhost', 'root', 'root' );
+	$db_found = mysqli_select_db($db_handle, $database);
 
-  <div class="container marketing">
+	//si le BDD existe, faire le traitement
+	if ($db_found) {
+		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Vetement%'";
+		$result = mysqli_query($db_handle, $sql);
+		while ($data = mysqli_fetch_assoc($result)) {
+ 
+			?>
 
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="overlay-image">
-          <a href="livresConnect.php">
-            <img class="ronds" src="img/livres.jpg" alt="livres">
-            <div class="hover col-lg-6">
-              <div class="text">Acheter des livres</div>
+			<div class="row">
+        <div class="col-lg-4">
+          <div class="zoom">
+              <div class="image">
+                <img src="img/<?php echo  $data['Photo1'];?>" >
+                <img src="img/<?php echo  $data['Photo2'];?>" >
+              </div>          
+          
+            <div class="image">
+              <img src="img/<?php echo  $data['Photo3'];?>" >
             </div>
-          </a>
-        </div>        
-          <h2>Livres</h2>
-      </div><!-- /.col-lg-4 -->
-      
-      <div class="col-lg-6">
-        <div class="overlay-image">
-          <a href="musiqueConnect.php">
-            <img class="ronds" src="img/musique.jpg" alt="Musique">
-            <div class="hover col-lg-6">
-              <div class="text">Matériel audio</div>
-            </div>
-          </a>
-        </div>        
-          <h2>Musique</h2>
-      </div><!-- /.col-lg-4 -->
-    </div>  
-
-    <div class="row">   
-      <div class="col-lg-6">
-        <div class="overlay-image">
-          <a href="vetConnect.php">
-            <img class="ronds" src="img/vet.jpg" alt="vêtements">
-            <div class="hover col-lg-6">
-              <div class="text">Acheter des vêtements</div>
-            </div>
-          </a>
-        </div>        
-          <h2>Vêtements</h2>
-      </div><!-- /.col-lg-4 -->
+          </div>
+        </div>
 
         <div class="col-lg-6">
-        <div class="overlay-image">
-          <a href="sportConnect.php">
-            <img class="ronds" src="img/sport.jpg" alt="Sport">
-            <div class="hover col-lg-6">
-              <div class="text">Matériel de sport et loisir</div>
+          <div class="row" id="titre">
+            <?php echo  $data['Titre'] . '<br>';?>
+          </div>
+          <div class="col">
+            <p id="description">Description : </p>
+            <div class="row">
+              <?php echo  $data['Description'] . '<br>';?>
             </div>
-          </a>
-        </div>        
-          <h2>Sports et loisir</h2>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
+          </div>
+          <div class="row">
+            <p id="vendeur">Vendeur : </p>
+            <div class="col">
+              <?php echo  $data['Vendeur'] . '<br>';?>
+            </div>
+          </div>
+           <div class="col">
+                     <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
+                  </div>
+        </div>
+        <div class="col-lg-2" id="droite">
+          <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
+          
+          <div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
+        </div>
+      </div>
+
+			<hr>
+
+			<?php
+		}//end while
+	}//end if
+	
+	//si le BDD n'existe pas
+	else {
+		echo "Database not found";
+	}//end else
+
+	//fermer la connection
+	mysqli_close($db_handle);
+?>
+
+</table>
+
 
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
     <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
-</main>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script></body>
+
 </html>

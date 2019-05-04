@@ -42,10 +42,23 @@ if ($db_found) {
 							
 							<?php $vend =  $data['Vendeur'];?>
 						</div>
+						<div class="col">
+							
+							<?php $stock =  $data['Stock'];?>
+						
+
+						</div>
 					</div>
 					<div class="col">
 						
 							<?php $prix =  $data['Prix'];?>
+						</div>
+
+					<div class="col">
+							
+						<?php $nbvente =  $data['NombreVente'];?>
+						
+
 						</div>
 					</div>
 				</div>
@@ -86,6 +99,10 @@ if ($db_found) {
 
 		$quantite = $data['Quantite'];
 
+		$nbvente = $nbvente - 1;
+  		$sql2 = "UPDATE Item SET NombreVente = '$nbvente' WHERE Id = '$id' ";
+  		$result = mysqli_query($db_handle, $sql2);
+
 
 		if($quantite > 1)
 		{
@@ -99,8 +116,15 @@ if ($db_found) {
 			
 				$sql = "DELETE FROM contact WHERE Id LIKE '$id'";
 
+
 		}
+
 		$result = mysqli_query($db_handle, $sql);
+
+		
+		$stock = $stock + 1;
+		$sql1 = "UPDATE Item SET Stock = '$stock' WHERE Id = '$id' ";
+  		$result = mysqli_query($db_handle, $sql1);
 
   header('location: panier.php');
 

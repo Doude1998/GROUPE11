@@ -11,6 +11,8 @@
     $adresse   = isset($_POST["Adresse"]) ? $_POST["Adresse"] : "";
     $bic   = isset($_POST["BIC"]) ? $_POST["BIC"] : "";
     $iban   = isset($_POST["IBAN"]) ? $_POST["IBAN"] : "";
+    $fond = isset($_POST["Fond"]) ? $_POST["Fond"] : "";
+    $profil = isset($_POST["Profil"]) ? $_POST["Profil"] : "";
 
     //identifier votre BDD
     $database  = "amazon";
@@ -33,8 +35,8 @@
 
             //regarder s'il y a un résultat
             if (mysqli_num_rows($result) == 0){
-                $sql  = "INSERT INTO Vendeur (Nom, Prenom, Pseudo, Email, MDP, Ville, CP, Adresse, BIC, IBAN, Connecte)
-                VALUES ('$nom','$prenom', '$pseudo','$email','$mdp','$ville','$cp','$adresse', '$bic','$iban', 'oui') ";
+                $sql  = "INSERT INTO Vendeur (Nom, Prenom, Pseudo, Email, MDP, Ville, CP, Adresse, BIC, IBAN, Fond, Profil, Connecte)
+                VALUES ('$nom','$prenom', '$pseudo','$email','$mdp','$ville','$cp','$adresse', '$bic','$iban', '$fond', '$profil', 'oui') ";
                 $result = mysqli_query($db_handle, $sql);
                 header('Location: connectPageV.php');
             }

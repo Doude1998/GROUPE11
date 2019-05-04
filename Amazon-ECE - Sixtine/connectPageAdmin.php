@@ -25,7 +25,6 @@
   
     #UtilisateurConnecte {
       margin-left: 100px;
-      margin-top: 10px;
       font-size: 20px;
       font-style: oblique;
       color: white;
@@ -40,7 +39,7 @@
 
   <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="connectPage.php">ECE Amazon</a>
+      <a class="navbar-brand" href="connectPageAdmin.php">ECE Amazon</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -55,24 +54,16 @@
             <div class="dropdown">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="livresConnect.php">Livres</a>
-                <a class="dropdown-item" href="musiqueConnect.php">Musique</a>
-                <a class="dropdown-item" href="vetConnect.php">Vêtements</a>
-                <a class="dropdown-item" href="sportConnect.php">Sports et loisirs</a>
+                <a class="dropdown-item" href="livresConnectA.php">Livres</a>
+                <a class="dropdown-item" href="musiqueConnectA.php">Musique</a>
+                <a class="dropdown-item" href="vetConnectA.php">Vêtements</a>
+                <a class="dropdown-item" href="sportConnectA.php">Sports et loisirs</a>
               </div>
             </div>
           </li>
             
           <li class="nav-item ml-4">
-            <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventes flash</a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="livresConnectF.php">Livres</a>
-                <a class="dropdown-item" href="musiqueConnectF.php">Musique</a>
-                <a class="dropdown-item" href="vetConnectF.php">Vêtements</a>
-                <a class="dropdown-item" href="sportConnectF.php">Sports et loisirs</a>
-              </div>
-            </div>
+              <a class="btn btn-secondary" href="ventesFadmin.php" role="button">Ventes Flash</a>
           </li>
 
           <li>
@@ -96,6 +87,7 @@
                 }
               }
             ?>
+            <p style="font-size: 14px;" >Connecté(e) en tant qu'admin</p>
             </div>
           </li>
 
@@ -111,25 +103,23 @@
 
 
 <main role="main">
-
   <div class="container marketing">
-
     <div class="row">
       <div class="col-lg-6">
         <div class="overlay-image">
           <a onclick="document.getElementById('id01').style.display='block'">
             <img class="ronds" src="img/ajout.png" alt="ajout">
             <div class="hover col-lg-6">
-              <div class="text">Vendre un produit</div>
+              <div class="text">Ajouter un produit</div>
             </div>
           </a>
         </div>        
           <h2>Ajouter un produit</h2>
-      </div>
+      </div><!-- /.col-lg-4 -->
       
       <div class="col-lg-6">
         <div class="overlay-image">
-          <a onclick="document.getElementById('id02').style.display='block">
+          <a onclick="document.getElementById('id02').style.display='block'">
             <img class="ronds" src="img/sup.png" alt="sup">
             <div class="hover col-lg-6">
               <div class="text">Supprimer un compte vendeur</div>
@@ -137,10 +127,11 @@
           </a>
         </div>        
           <h2>Supprimer un compte vendeur</h2>
-      </div>
+      </div><!-- /.col-lg-4 -->
     </div>  
   </div>
 </main>
+
 
 <!--FORMULAIRE D'AJOUT ITEM-->
 <div class="modal" id="id01">
@@ -161,6 +152,9 @@
       		<label for="Prix"><b>Prix</b></label><br>
       		<input type="number" placeholder="Prix" name="Prix" required> €<br><br>
 
+          <label for="Stock"><b>Quantité</b></label><br>
+          <input type="number" placeholder="Stock" name="Stock" required><br><br>
+
       		<label for="Categorie"><b>Catégorie</b></label><br>
       		<select size="1" name="Categorie" required>
       			<option value="">Choisir</option>
@@ -172,8 +166,8 @@
 
 			<label for="images">Ajoutez au moins une image</label><br>
 			<input type="file" name="image1" required>
-			<input type="file" name="image2">
-			<input type="file" name="image3"><br><br>
+			<input type="file" name="image2" required>
+			<input type="file" name="image3" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Ajouter mon produit</button><br><br>
     	</div>
@@ -189,31 +183,27 @@
           <img src="img/sup.png" alt="Avatar" id="avatar">
       </div>
 
+      <?php
+        $database  = "AMAZON";
+
+        //connectez-vous dans votre BDD
+        $db_handle = mysqli_connect('localhost', 'root', 'root');
+        $db_found  = mysqli_select_db($db_handle, $database);
+
+        $sql = "SELECT * FROM Vendeur";
+        $result = mysqli_query($db_handle, $sql);
+
+        while ($data = mysqli_fetch_assoc($result)) {
+          echo $data['Nom'] . " " . $data['Prenom'] . " (Pseudo : " . $data['Pseudo'] . ")<br>";
+        }
+
+      ?>
+
       <div class="container">
-        <label for="Titre"><b>Titre</b></label><br>
-          <input type="text" placeholder="Titre" name="Titre" required><br>
-
-          <label for="Description"><b>Description</b></label><br>
-          <textarea rows="5" name="Description" required></textarea><br><br>
-
-          <label for="Prix"><b>Prix</b></label><br>
-          <input type="number" placeholder="Prix" name="Prix" required> €<br><br>
-
-          <label for="Categorie"><b>Catégorie</b></label><br>
-          <select size="1" name="Categorie" required>
-            <option value="">Choisir</option>
-          <option value="Livres">Livre</option>
-          <option value="Musique">Musique</option>
-          <option value="Vetement">Vêtement</option>
-          <option value="Sport">Sport et Loisir</option>
-      </select><br><br>
-
-      <label for="images">Ajoutez au moins une image</label><br>
-      <input type="file" name="image1" required>
-      <input type="file" name="image2">
-      <input type="file" name="image3"><br><br>
+        <label for="Pseudo"><b>Entrez le Pseudo</b></label><br>
+        <input type="text" placeholder="Prenom Nom" name="Pseudo" required><br><br>
         
-          <button class="submit" name="Create" type="submit">Ajouter mon produit</button><br><br>
+        <button class="submit" name="Create" type="submit">Supprimer le vendeur</button><br><br>
       </div>
     </form>
 </div>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -10,10 +10,10 @@
     <title>Amazon ECE</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-	<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
 
@@ -52,16 +52,8 @@
         		</li>
         		
         		<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventes flash</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <a class="dropdown-item" href="livresF.php">Livres</a>
-			    			<a class="dropdown-item" href="musiqueF.php">Musiques</a>
-    						<a class="dropdown-item" href="vetF.php">Vêtements</a>
-    						<a class="dropdown-item" href="sportF.php">Sports et loisirs</a>
-  						</div>
-					</div>
-        		</li>
+              <a class="btn btn-secondary" href="ventesF.php" role="button">Ventes Flash</a>
+            </li>
 
         		<li class="nav-item ml-4">
         			<div class="dropdown">
@@ -84,8 +76,8 @@
         	</ul>
         	<ul class="navbar-nav float-right">
         		<li class="nav-item">
-        			<a href="loginAdmin.php" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
-        		</li>
+              <a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
+            </li>
         		<li class="nav-item ml-4">
         			<a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
         		</li>
@@ -94,7 +86,7 @@
   	</nav>
 </header>
 
-<h1 id="livres">Livres</h1>
+<h1 id="livres">Sport et Loisir</h1>
 <hr>
 
 <!--le code PHP --------->
@@ -118,7 +110,7 @@
 			?>
 
 			<div class="row">
-				<div class="col-lg-4">
+        <div class="col-lg-4">
           <div class="zoom">
               <div class="image">
                 <img src="img/<?php echo  $data['Photo1'];?>" >
@@ -131,29 +123,32 @@
           </div>
         </div>
 
-				<div class="col-lg-6">
-					<div class="row" id="titre">
-						<?php echo  $data['Titre'] . '<br>';?>
-					</div>
-					<div class="col">
-						<p id="description">Description : </p>
-						<div class="row">
-							<?php echo  $data['Description'] . '<br>';?>
-						</div>
-					</div>
-					<div class="row">
-						<p id="vendeur">Vendeur : </p>
-						<div class="col">
-							<?php echo  $data['Vendeur'] . '<br>';?>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-2" id="droite">
-					<div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
+        <div class="col-lg-6">
+          <div class="row" id="titre">
+            <?php echo  $data['Titre'] . '<br>';?>
+          </div>
+          <div class="col">
+            <p id="description">Description : </p>
+            <div class="row">
+              <?php echo  $data['Description'] . '<br>';?>
+            </div>
+          </div>
+          <div class="row">
+            <p id="vendeur">Vendeur : </p>
+            <div class="col">
+              <?php echo  $data['Vendeur'] . '<br>';?>
+            </div>
+          </div>
+           <div class="col">
+                     <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
+                  </div>
+        </div>
+        <div class="col-lg-2" id="droite">
+          <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
           
-					<div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
-				</div>
-			</div>
+          <div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
+        </div>
+      </div>
 
 			<hr>
 
@@ -219,6 +214,31 @@
       		</label><br>
     	</div>
     	<span><a href="#">Mot de passe oublié ?</a></span>
+    </form>
+</div>
+
+<!--FORMULAIRE DE CONNECTION ADMIN-->
+<div id="id05" class="modal">
+    <form class="modal-content animate" action="loginAdmin.php" method="POST">
+
+      <div class="imgcontainer">
+          <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="img/icone.png" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
+          <input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
+
+          <label for="MDP"><b>Mot de passe</b></label><br>
+          <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+        
+          <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+          </label><br>
+      </div>
+      <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
 
@@ -300,6 +320,12 @@
       		
       		<label for="IBAN"><b>IBAN :</b></label><br>
       		<input type="text" placeholder="IBAN" name="IBAN" required><br><br>
+
+          <label for="Profil">Photo de profil</label><br>
+          <input type="file" name="Profil" required><br><br>
+
+          <label for="Fond">Photo de fond d'écran</label><br>
+          <input type="file" name="Fond" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>

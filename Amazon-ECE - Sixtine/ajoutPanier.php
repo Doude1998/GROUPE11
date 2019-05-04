@@ -42,6 +42,17 @@ if ($db_found) {
 							
 							<?php $vend =  $data['Vendeur'];?>
 						</div>
+						<div class="col">
+							
+							<?php $stock =  $data['Stock'];?>
+						
+						</div>
+						<div class="col">
+							
+							<?php $nbvente =  $data['NombreVente'];?>
+						
+
+						</div>
 					</div>
 					<div class="col">
 						
@@ -68,9 +79,6 @@ if ($db_found) {
 ?>
 
 
-
-
-
 <?php
 $database = "AMAZON";
 //connectez-vous dans votre BDD
@@ -87,10 +95,13 @@ if ($db_found) {
 
 	$data = mysqli_fetch_assoc($result); 
  
-		echo $data['Quantite'];
+
+
 		$quantite = $data['Quantite'];
 
-		echo $quantite;
+		$nbvente = $nbvente + 1;
+  		$sql2 = "UPDATE Item SET NombreVente = '$nbvente' WHERE Id = '$id' ";
+  		$result = mysqli_query($db_handle, $sql2);
 
 		if($quantite > 0)
 		{
@@ -99,22 +110,75 @@ if ($db_found) {
 
 			$sql1 = "UPDATE contact SET Quantite = '$quantite' WHERE Id = '$id' ";
   			$result = mysqli_query($db_handle, $sql1);
+
+  			$stock = $stock - 1;
+
+  			
+
+  			
+
+
+			if($stock == 0)
+  			{
+  			$sql = "SELECT * FROM Item WHERE Stock ='1' ";
+  			$sql  = "DELETE FROM Item WHERE Stock = '1' " ;
+  
+			$result = mysqli_query($db_handle, $sql);
+  			
+  			}else{
+  			$sql1 = "UPDATE Item SET Stock = '$stock' WHERE Id = '$id' ";}
+
+
+  			
+  			$result = mysqli_query($db_handle, $sql1);
+
+
 		}
 		else { 
+
+			$stock = $stock - 1;
+	
+		
+
+  			$sql1 = "UPDATE Item SET Stock = '$stock' WHERE Id = '$id' ";
+  	
+  			$result = mysqli_query($db_handle, $sql1);
+
+
+
 			$sql = "INSERT INTO contact (Id, Nom, Prix, Photo, Description, Vendeur) VALUES ('$id','$nom', '$prix', '$pic','$desc','$vend') ";
+			$result = mysqli_query($db_handle, $sql);
+
+
+			
+
+			$sql = "SELECT * FROM Item WHERE Stock ='1'";
+			$result = mysqli_query($db_handle, $sql);
 		}
+	
+
 		$result = mysqli_query($db_handle, $sql);
 
-  header('location: panier.php');
 
-	}//end if
+		$sql = "SELECT * FROM Acheteur WHERE Connecte LIKE 'oui'";
+        $result = mysqli_query($db_handle, $sql);
+            
+        //regarder s'il y a de résultat
+        if (mysqli_num_rows($result) == 0){                 
+            header('location: panier.php');
+        }
+        else {         
+			header('location: panierConnect.php');
+        }
+
+		}//end if
 	
 	//si le BDD n'existe pas
 	else {
 		echo "Database not found";
 	}//end else
 
-	//fermer la connection
-	mysqli_close($db_handle);
+//fermer la connection
+mysqli_close($db_handle);
 ?>
 

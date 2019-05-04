@@ -51,16 +51,8 @@
         		</li>
         		
         		<li class="nav-item ml-4">
-        			<div class="dropdown">
-  						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ventes flash</a>
-		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						    <a class="dropdown-item" href="livresF.php">Livres</a>
-			    			<a class="dropdown-item" href="musiqueF.php">Musiques</a>
-    						<a class="dropdown-item" href="vetF.php">Vêtements</a>
-    						<a class="dropdown-item" href="sportF.php">Sports et loisirs</a>
-  						</div>
-					</div>
-        		</li>
+              <a class="btn btn-secondary" href="ventesF.php" role="button">Ventes Flash</a>
+            </li>
 
         		<li class="nav-item ml-4">
         			<div class="dropdown">
@@ -81,6 +73,7 @@
 					</div>
         		</li>
         	</ul>
+          
         	<ul class="navbar-nav float-right">
         		<li class="nav-item">
         			<a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
@@ -246,6 +239,12 @@
       		
       		<label for="IBAN"><b>IBAN :</b></label><br>
       		<input type="text" placeholder="IBAN" name="IBAN" required><br><br>
+
+          <label for="Profil">Photo de profil</label><br>
+          <input type="file" name="Profil" required><br><br>
+
+          <label for="Fond">Photo de fond d'écran</label><br>
+          <input type="file" name="Fond" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>
