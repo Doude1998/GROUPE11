@@ -253,15 +253,6 @@
       		
       		<label for="MDP"><b>Mot de passe</b></label><br>
       		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-      		
-      		<label for="VilleU"><b>Ville</b></label><br>
-      		<input type="text" placeholder="Ville" name="VilleU" required><br><br>
-      		
-      		<label for="CPU"><b>Code Postal</b></label><br>
-      		<input type="text" placeholder="XX XXX" name="CPU" required><br><br>
-      		
-      		<label for="AdresseU"><b>Adresse</b></label><br>
-      		<input type="text" placeholder="N° et rue" name="AdresseU" required><br><br>
         
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>

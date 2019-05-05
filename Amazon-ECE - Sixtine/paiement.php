@@ -5,7 +5,7 @@ $carte   = isset($_POST["Carte"]) ? $_POST["Carte"] : "";
 $numero  = isset($_POST["Numero"]) ? $_POST["Numero"] : "";
 $nom   = isset($_POST["Nom"]) ? $_POST["Nom"] : "";
 $date = isset($_POST["Mois"]) ? $_POST["Mois"] : "";
-$crypto   = isset($_POST["CodeSecu"]) ? $_POST["CodeSecu"] : "";
+$crypto   = isset($_POST["Crypto"]) ? $_POST["Crypto"] : "";
 $ville = isset($_POST["Ville"]) ? $_POST["Ville"] : "";
 $adresse = isset($_POST["Adresse"]) ? $_POST["Adresse"] : "";
 $code = isset($_POST["Code"]) ? $_POST["Code"] : "";
@@ -21,11 +21,10 @@ $db_found  = mysqli_select_db($db_handle, $database);
 if (isset($_POST["Login"])) {
     
     if ($db_found) {
-    	$sql = "SELECT * FROM Acheteur WHERE Connecte LIKE 'oui'";
-		  $result = mysqli_query($db_handle, $sql);
 
-      $sql  = "INSERT INTO Vendeur (TypeC, NumeroCarte, NomCarte, DateExpiration, CodeSecu, Ville, CP, Adresse)
-      VALUES ('$carte','$numero', '$nom','$date','$crypto', '$ville', '$code', '$adresse') ";
+      $sql ="UPDATE Acheteur SET TypeC='$carte', NumeroCarte='$numero', NomCarte='$nom', DateExpiration='$date', CodeSecu='$crypto', Ville='$ville', CP='$code', Adresse='$adresse' WHERE Connecte='oui'";
+      $result = mysqli_query($db_handle, $sql);
+      $sql = "DELETE FROM `contact`";
       $result = mysqli_query($db_handle, $sql);
       ?>
                 <style type="text/css">

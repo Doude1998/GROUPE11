@@ -6,9 +6,6 @@
     $identifiant   = isset($_POST["Identifiant"]) ? $_POST["Identifiant"] : "";
     $email = isset($_POST["Email"]) ? $_POST["Email"] : "";
     $mdp   = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
-    $villeu   = isset($_POST["VilleU"]) ? $_POST["VilleU"] : "";
-    $cpu   = isset($_POST["CPU"]) ? $_POST["CPU"] : "";
-    $adresseu   = isset($_POST["AdresseU"]) ? $_POST["AdresseU"] : "";
 
     //identifier votre BDD
     $database  = "AMAZON";
@@ -31,8 +28,8 @@
             //regarder s'il y a de résultat
             if (mysqli_num_rows($result) == 0){ 
                 
-                $sql  = "INSERT INTO Acheteur (Nom, Prenom, Identifiant, Email, MDP, VilleU, CPU,AdressU,VilleL,CPL, AdresseL,TypeC,NumeroCarte, NomCarte,DateExpiration, CodeSecu, Connecte)
-                VALUES ('$nom','$prenom', '$identifiant','$email','$mdp','$villeu','$cpu','$adresseu','VilleL','CPL','AdresseL','TypeC','NumeroCarte','NomCarte','DateExpiratione','CodeSecu', 'oui') ";
+                $sql  = "INSERT INTO Acheteur (Nom, Prenom, Identifiant, Email, MDP, Ville, CP,Adress,TypeC,NumeroCarte, NomCarte,DateExpiration, CodeSecu, Connecte)
+                VALUES ('$nom','$prenom', '$identifiant','$email','$mdp','Ville','CP','Adresse','TypeC','NumeroCarte','NomCarte','DateExpiratione','CodeSecu', 'oui') ";
                 $result = mysqli_query($db_handle, $sql);
                 header('Location: connectPageA.php');
             }

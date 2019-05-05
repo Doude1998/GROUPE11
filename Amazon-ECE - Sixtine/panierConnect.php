@@ -248,8 +248,9 @@ $soustot1 = $data0['count'];
           <input type="text" placeholder="XX XXX" name="Code" required><br>
 
           <label for="Ville"><b>Ville </b></label><br>
-          <input type="text" placeholder="Ville" name="Ville" required><br>
+          <input type="text" placeholder="Ville" name="Ville" required><br><br>
 
+          <label for="Nom"><b>Informations de paiement : </b></label><br><br>
         <label for="Nom"><b>Propriétaire de la carte</b></label><br>
           <input type="text" placeholder="Nom" name="Nom" required><br>
 

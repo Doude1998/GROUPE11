@@ -1,0 +1,6 @@
+Sources utilisées pour le projet :
+getbootstrap.com
+www.w3schools.com
+openclassrooms.com
+htmlcolorcodes.com
+developer.mozilla.org
