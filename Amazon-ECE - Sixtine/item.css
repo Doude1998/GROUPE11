@@ -1,16 +1,17 @@
+/* mise en page de la page globale */
 body{
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif; /* style de police */
+	margin: 0px; 
 	padding: 0px;
-	background: #C8D8EA;
+	background: #C8D8EA; /* couleur du fond d'écran */
 }
 
 .row {
-  margin: 20px;
+  margin: 20px; /* marge */
 }
 
 .btn {
-  padding: 15px;
+  padding: 15px; /* marge autour du texte */
 }
 
 #livres{
@@ -19,19 +20,19 @@ body{
 }
 
 #description {
-  font-size: 20px;
+  font-size: 20px; /* taille du texte */
   text-decoration: underline; 
 }
 
 #vendeur{
-  font-weight: bold;
+  font-weight: bold; /* texte en gras */
 }
 
 #prix{
   font-size: 25px;
   margin-left: 43%;
   margin-top: 20%;
-  color: green;
+  color: green; /* couleur du texte */
 }
 
 #droite{
@@ -43,13 +44,12 @@ body{
   border: none;
   color: white;
   padding: 8px 16px;
-  text-align: center;
+  text-align: center; /* aligner le texte au centre du bouton */
   font-size: 12px;
   opacity: 1;
   transition: 0.3s;
   border-radius: 5px;
-  margin-top: 50%;
-  margin-left: 30px;
+  margin-top: 40%;
 }
 
 .btnPanier:hover {
@@ -57,7 +57,7 @@ body{
 }
 
 #titre{
-  font-style: oblique; 
+  font-style: oblique; /* texte en italique */
   font-weight: bold;
   text-align: center;
   font-size: 25px;
@@ -79,21 +79,21 @@ hr{
 }
 
 .image img {
-/* La transition s'applique à la fois sur la largeur et la hauteur, avec une durée d'une seconde. */
--webkit-transition: all 1s ease; /* Safari et Chrome */
-transition: all 1s ease;
-border: solid 1px grey;
-border-radius: 10px;
-width: 110px;
-margin-top: 25px;
-margin-right: 20px;
+  /* La transition s'applique à la fois sur la largeur et la hauteur, avec une durée d'une seconde. */
+  -webkit-transition: all 1s ease; /* Safari et Chrome */
+  transition: all 1s ease;
+  border: solid 1px grey;
+  border-radius: 10px;
+  width: 110px;
+  margin-top: 25px;
+  margin-right: 20px;
 }
 
 .image img:hover {
-/* L'image est grossie de 25% */
--webkit-transform:scale(3); /* Safari et Chrome */
-transform:scale(3);
-cursor: pointer;
+  /* L'image est grossie de 25% */
+  -webkit-transform:scale(3); /* Safari et Chrome */
+  transform:scale(3);
+  cursor: pointer;
 }
 
 /*/////////////   FORMULAIRES   /////////////////////////*/
@@ -113,12 +113,12 @@ cursor: pointer;
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    box-sizing: border-box;
-    width: 25%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
 }
 
 /* Extra styles for the cancel button */
@@ -194,7 +194,7 @@ img.avatar {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
@@ -203,10 +203,10 @@ img.avatar {
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
+   display: block;
+   float: none;
+ }
+ .cancelbtn {
+   width: 100%;
+ }
 }

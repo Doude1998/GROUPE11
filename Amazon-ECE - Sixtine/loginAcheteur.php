@@ -1,4 +1,5 @@
 <?php
+//recuperation des varaibles saisies
   $identifiant   = isset($_POST["Identifiant"]) ? $_POST["Identifiant"] : "";
   $mdp = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
 
@@ -63,7 +64,7 @@
                 <?php 
       }
       else {
-
+          //boucle pour mettre la connection à jour
          while ($data = mysqli_fetch_assoc($result)) {
           $sql ="UPDATE Acheteur SET Connecte='oui' WHERE Identifiant='$identifiant'";
           $result = mysqli_query($db_handle, $sql);

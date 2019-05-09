@@ -1,4 +1,5 @@
 <?php
+  //recuperation des donnees saisies par clavier
   $identifiant   = isset($_POST["Pseudo"]) ? $_POST["Pseudo"] : "";
   $mdp = isset($_POST["MDP"]) ? $_POST["MDP"] : "";
 

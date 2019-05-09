@@ -28,8 +28,8 @@
             //regarder s'il y a de résultat
             if (mysqli_num_rows($result) == 0){ 
                 
-                $sql  = "INSERT INTO Acheteur (Nom, Prenom, Identifiant, Email, MDP, Ville, CP,Adress,TypeC,NumeroCarte, NomCarte,DateExpiration, CodeSecu, Connecte)
-                VALUES ('$nom','$prenom', '$identifiant','$email','$mdp','Ville','CP','Adresse','TypeC','NumeroCarte','NomCarte','DateExpiratione','CodeSecu', 'oui') ";
+                $sql  = "INSERT INTO Acheteur (Nom, Prenom, Identifiant, Email, MDP, Connecte)
+                VALUES ('$nom','$prenom', '$identifiant','$email','$mdp', 'oui') ";
                 $result = mysqli_query($db_handle, $sql);
                 header('Location: connectPageA.php');
             }

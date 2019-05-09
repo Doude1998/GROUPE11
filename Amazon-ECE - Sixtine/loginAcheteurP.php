@@ -15,7 +15,7 @@
 
     if($db_found){
       $sql = "SELECT * FROM Acheteur";
-      
+      //boucle pour se placer dans la ligne de la table correspondante
       if ($identifiant != "") {
         //on cherche le livre avec les paramètres titre et auteur
         $sql .= " WHERE Identifiant LIKE '%$identifiant%'";
@@ -63,7 +63,7 @@
                 <?php 
       }
       else {
-
+        //Boucle pour mettre à jour la connection d'un acheteur
          while ($data = mysqli_fetch_assoc($result)) {
           $sql ="UPDATE Acheteur SET Connecte='oui' WHERE Identifiant='$identifiant'";
           $result = mysqli_query($db_handle, $sql);

@@ -1,100 +1,111 @@
 <!doctype html>
 <html lang="fr">
 <head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.ico">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <meta name="description" content="">
+ <meta name="author" content="">
+ <link rel="icon" href="img/favicon.ico">
 
-    <title>Amazon ECE</title>
+ <title>Amazon ECE</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-   <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+ <!-- bibliothèques et pages reliées -->
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+ <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
 
-    <!-- Custom styles for this template -->
-    <link href="item.css" rel="stylesheet">
-    <link href="mainPage.css" rel="stylesheet">
+ <!-- Bootstrap core CSS -->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    <style type="text/css">
-      #total{
-        border: solid 2px grey;
-        float: right;
-        font-style: oblique;
-        margin-right: 40px;
-        font-size: 15px;
-        padding: 5px;
-      }
-    </style>
+ <!-- Custom styles for this template -->
+ <link href="item.css" rel="stylesheet">
+ <link href="mainPage.css" rel="stylesheet">
+
+ <!-- mise en page -->
+ <style type="text/css">
+  #total{
+    border: solid 2px grey;
+    float: right;
+    font-style: oblique;
+    margin-right: 40px;
+    font-size: 15px;
+    padding: 5px;
+  }
+</style>
 
 </head>
 
 <body>
 
-   <header>
+  <!-- en tête du site -->
+ <header>
    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="mainPage.html">ECE Amazon</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- lien retour a la page principale -->
+    <a class="navbar-brand" href="mainPage.html">ECE Amazon</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
 
-       <div class="collapse navbar-collapse" id="navbarCollapse">
+   <div class="collapse navbar-collapse" id="navbarCollapse">
 
-         <ul class="navbar-nav ml-5">
-            <li class="nav-item ml-4">
-               <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <a class="dropdown-item" href="livres.php">Livres</a>
-                     <a class="dropdown-item" href="musique.php">Musiques</a>
-                     <a class="dropdown-item" href="vet.php">Vêtements</a>
-                     <a class="dropdown-item" href="sport.php">Sports et loisirs</a>
-                  </div>
-               </div>
-            </li>
-            
-            <li class="nav-item ml-4">
-              <a class="btn btn-secondary" href="ventesF.php" role="button">Ventes Flash</a>
-            </li>
-
-            <li class="nav-item ml-4">
-               <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendre</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
-                     <button onclick="document.getElementById('id04').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
-                  </div>
-               </div>
-            </li>
-            <li class="nav-item ml-4">
-               <div class="dropdown">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre compte</a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
-                     <button onclick="document.getElementById('id02').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
-                  </div>
-               </div>
-            </li>
-         </ul>
-         <ul class="navbar-nav float-right">
-            <li class="nav-item">
-               <a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
-            </li>
-            <li class="nav-item ml-4">
-               <a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-            </li>
-         </ul>
+     <ul class="navbar-nav ml-5">
+      <li class="nav-item ml-4">
+        <!-- bouton déroulant -->
+       <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="livres.php">Livres</a>
+          <a class="dropdown-item" href="musique.php">Musiques</a>
+          <a class="dropdown-item" href="vet.php">Vêtements</a>
+          <a class="dropdown-item" href="sport.php">Sports et loisirs</a>
+        </div>
       </div>
-   </nav>
+    </li>
+
+    <li class="nav-item ml-4">
+      <!-- bouton normal ventes flash -->
+      <a class="btn btn-secondary" href="ventesF.php" role="button">Ventes Flash</a>
+    </li>
+
+    <li class="nav-item ml-4">
+      <!-- bouton déroulant -->
+     <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendre</a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
+         <button onclick="document.getElementById('id04').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
+         </div>
+       </div>
+     </li>
+     <li class="nav-item ml-4">
+      <!-- bouton déroulant -->
+       <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre compte</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <button onclick="document.getElementById('id01').style.display='block'" type="button" class="dropdown-item">Se connecter</a>
+           <button onclick="document.getElementById('id02').style.display='block'" type="button" class="dropdown-item">S'inscrire</a>
+           </div>
+         </div>
+       </li>
+     </ul>
+     <ul class="navbar-nav float-right">
+      <li class="nav-item">
+        <!-- connection de l'admin -->
+       <a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
+     </li>
+     <li class="nav-item ml-4">
+      <!-- lien vers le panier -->
+       <a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+     </li>
+   </ul>
+ </div>
+</nav>
 </header>
 
 <h1 id="livres">Votre panier</h1>
@@ -102,87 +113,92 @@
 <hr>
 <!--le code PHP --------->
 <table>
-   
-<?php
+
+  <?php
    //identifier le nom de base de données
-   $database = "AMAZON";
-   
+  $database = "AMAZON";
+
    //connectez-vous dans votre BDD
    //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-   $db_handle = mysqli_connect('localhost', 'root', 'root' );
-   $db_found = mysqli_select_db($db_handle, $database);
+  $db_handle = mysqli_connect('localhost', 'root', 'root' );
+  $db_found = mysqli_select_db($db_handle, $database);
 
    //si le BDD existe, faire le traitement
-   if ($db_found) {
-      $sql = "SELECT DISTINCT * FROM contact";
+  if ($db_found) {
+    //chercher dans la base de données du panier
+    $sql = "SELECT DISTINCT * FROM contact";
 
 
-      $result = mysqli_query($db_handle, $sql);
-      while ($data = mysqli_fetch_assoc($result)) {
- 
-         ?>
+    $result = mysqli_query($db_handle, $sql);
+    while ($data = mysqli_fetch_assoc($result)) {
 
-         <div class="row" id="test">
-            <div class="col-lg-3">
-               <div>
-                  <img style="border: solid 2px grey; border-radius: 20px;" src="img/<?php echo  $data['Photo'];?>" >
-               </div>
+     ?>
 
-            </div>
-            <div class="col-lg-7">
-               <div class="row" id="titre">
-                  <?php echo  $data['Nom'] . '<br>';?>
-               </div>
-               <div class="col">
-                  <p id="description">Description : </p>
-                  <div class="row">
-                     <?php echo  $data['Description'] . '<br>';?>
-                  </div>
-               </div>
-               <div class="row">
-                  <p id="vendeur">Vendeur : </p>
-                  <div class="col">
-                     <?php echo  $data['Vendeur'] . '<br>';?>
-                     <?php echo  "Quantité: " .$data ['Quantite'] .'<br>';
-                     $quant = $data['Quantite'];?>
+     <!-- code html pour afficher les produits -->
+     <div class="row" id="test">
+      <div class="col-lg-3">
+       <div>
+        <img style="border: solid 2px grey; border-radius: 20px;" src="img/<?php echo  $data['Photo'];?>" >
+      </div>
 
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-2" id="droite">
-               <div class="row" id="prix"><?php echo  $data['Prix'] . ' €<br>';?></div>
-               <div class="row"><a class="btnPanier" href="delete.php?id=<?php echo $data['Id']; ?>">Supprimer</a></div>
+    </div>
+    <div class="col-lg-6">
+     <div class="row" id="titre">
+      <?php echo  $data['Nom'] . '<br>';?>
+    </div>
+    <div class="col">
+      <p id="description">Description : </p>
+      <div class="row">
+       <?php echo  $data['Description'] . '<br>';?>
+     </div>
+   </div>
+   <div class="row">
+    <p id="vendeur">Vendeur : </p>
+    <div class="col">
+     <?php echo  $data['Vendeur'] . '<br>';?>
+     <?php echo  "Quantité: " .$data ['Quantite'] .'<br>';
+     $quant = $data['Quantite'];?>
+
+   </div>
+ </div>
+</div>
+<div class="col-lg-3" id="droite">
+ <div class="row" id="prix"><?php echo  $data['Prix'] . ' €<br>';?></div>
+ <!-- bouton pour supprimer l'article du panier -->
+ <div class="row"><a class="btnPanier" href="delete.php?id=<?php echo $data['Id']; ?>">Supprimer</a></div>
 
 
-            </div>
-         </div>
+</div>
+</div>
 
-         <hr>
+<hr>
 
-         <?php
-         if ($quant >= 2)
+<?php
+if ($quant >= 2)
 {
   $q = $data['Quantite'];
   $p = $data['Prix'];
 
   $soustot2 = $q * $p;
 
-
+  //faire la somme des prix des articles dans le panier
   $qry = "SELECT SUM(Prix) AS count FROM contact";
   $result3 = mysqli_query($db_handle, $qry);
 
 }else
 
 {
-$qry = "SELECT SUM(Prix) AS count FROM contact WHERE Quantite ='1'";
-$result3 = mysqli_query($db_handle, $qry);
-$data0 = mysqli_fetch_assoc($result3);
+  //prendre en compte la quantité des articles
+  $qry = "SELECT SUM(Prix) AS count FROM contact WHERE Quantite ='1'";
+  $result3 = mysqli_query($db_handle, $qry);
+  $data0 = mysqli_fetch_assoc($result3);
 
-$soustot1 = $data0['count'];
+  $soustot1 = $data0['count'];
 }
       }//end while
       $total = $soustot1 + $soustot2;
       ?>
+      <!-- code html pour afficher le sous total les frais de livraison et le total -->
       <div id="total"><?php
       echo "Sous total " . $total . " €";?> <br> <?php
       $livraison = 3.50 ." €";
@@ -193,207 +209,235 @@ $soustot1 = $data0['count'];
       echo "Total :" .$Total . " €<br>";
       ?>
     </div>
-      <?php
+    <?php
    }//end if
    
    //si le BDD n'existe pas
    else {
-      echo "Database not found";
+    echo "Database not found";
    }//end else
 
    //fermer la connection
    mysqli_close($db_handle);
-?>
+   ?>
 
-<a onclick="document.getElementById('id06').style.display='block'" class="btn btn-secondary">Valider le panier</a>
+   <!-- bouton pour valider le panier et procéder au paiement -->
+   <a onclick="document.getElementById('id06').style.display='block'" class="btn btn-secondary">Valider le panier</a>
 
-</table>
+ </table>
 
-<!--FORMULAIRE DE CONNECTION ADMIN-->
-<div id="id05" class="modal">
-    <form class="modal-content animate" action="loginAdmin.php" method="POST">
+ <!--FORMULAIRE DE CONNECTION ADMIN-->
+ <div id="id05" class="modal">
+  <form class="modal-content animate" action="loginAdmin.php" method="POST">
 
-      <div class="imgcontainer">
-          <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
-          <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+    <div class="imgcontainer">
+      <!-- fermer le formulaire -->
+      <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <!-- icone en haut du formulaire -->
+      <img src="img/icone.png" alt="Avatar" class="avatar">
+    </div>
 
-      <div class="container">
-        <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
-          <input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
+    <div class="container">
+      <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
+      <input type="text" placeholder="Pseudo" name="Pseudo" required><br><br>
 
-          <label for="MDP"><b>Mot de passe</b></label><br>
-          <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-          <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-          </label><br>
-      </div>
-      <span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
+      <label for="MDP"><b>Mot de passe</b></label><br>
+      <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+
+      <!-- soumettre les infos au formualire -->
+      <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+      <label>
+        <!-- pas encore codé -->
+        <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+      </label><br>
+    </div>
+    <!-- pas encore codé -->
+    <span><a href="#">Mot de passe oublié ?</a></span>
+  </form>
 </div>
 
 <!--FORMULAIRE DE CONNECTION ACHETEUR-->
 <div id="id01" class="modal">
-   <form class="modal-content animate" action="loginAcheteur.php" method="POST">
+ <form class="modal-content animate" action="loginAcheteur.php" method="POST">
 
-      <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+  <div class="imgcontainer">
+    <!-- fermer le formualaire -->
+    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- icone en haut du formulaire -->
+    <img src="img/icone.png" alt="Avatar" class="avatar">
+  </div>
 
-      <div class="container">
-         <label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
-            <input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
+  <div class="container">
+   <label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
+   <input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
 
-            <label for="MDP"><b>Mot de passe</b></label><br>
-            <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-            <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-         <label>
-            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-            </label><br>
-      </div>
-      <span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
+   <label for="MDP"><b>Mot de passe</b></label><br>
+   <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+
+   <!-- soumettre les infos au formulaire -->
+   <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+   <label>
+    <!-- pas encore codé -->
+    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+  </label><br>
+</div>
+<!-- pas encore codé -->
+<span><a href="#">Mot de passe oublié ?</a></span>
+</form>
 </div>
 
 <!--FORMULAIRE DE CONNECTION ACHETEUR POUR VALIDER LE PANIER-->
 <div id="id06" class="modal">
-   <form class="modal-content animate" action="loginAcheteurP.php" method="POST">
+ <form class="modal-content animate" action="loginAcheteurP.php" method="POST">
 
-      <div class="imgcontainer">
-            <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+  <div class="imgcontainer">
+    <!-- fermer le formulaire -->
+    <span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- icone en haut du formulaire -->
+    <img src="img/icone.png" alt="Avatar" class="avatar">
+  </div>
 
-      <div class="container">
-         <label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
-            <input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
+  <div class="container">
+   <label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
+   <input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
 
-            <label for="MDP"><b>Mot de passe</b></label><br>
-            <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-            <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-         <label>
-            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-            </label><br>
-      </div>
-      <span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
+   <label for="MDP"><b>Mot de passe</b></label><br>
+   <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+
+   <!-- soumettre les infos au formulaire -->
+   <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+   <label>
+    <!-- pas encore codé -->
+    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+  </label><br>
+</div>
+<!-- pas encore codé -->
+<span><a href="#">Mot de passe oublié ?</a></span>
+</form>
 </div>
 
 <!--FORMULAIRE DE CONNECTION VENDEUR-->
 <div id="id03" class="modal">
-   <form class="modal-content animate" action="loginVendeur.php" method="POST">
+ <form class="modal-content animate" action="loginVendeur.php" method="POST">
 
-      <div class="imgcontainer">
-            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+  <div class="imgcontainer">
+    <!-- fermer le formulaire -->
+    <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- icone en haut du formulaire -->
+    <img src="img/icone.png" alt="Avatar" class="avatar">
+  </div>
 
-      <div class="container">
-         <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
-            <input type="text" placeholder="Nom d'utilisateur" name="Pseudo" required><br><br>
+  <div class="container">
+   <label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
+   <input type="text" placeholder="Nom d'utilisateur" name="Pseudo" required><br><br>
 
-            <label for="MDP"><b>Mot de passe</b></label><br>
-            <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-            <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-         <label>
-            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-            </label><br>
-      </div>
-      <span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
+   <label for="MDP"><b>Mot de passe</b></label><br>
+   <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+
+   <!-- soumettre les infos au formulaire -->
+   <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
+   <label>
+    <!-- pas encore codé -->
+    <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+  </label><br>
+</div>
+<!-- pas encore codé -->
+<span><a href="#">Mot de passe oublié ?</a></span>
+</form>
 </div>
 
 <!--FORMULAIRE D'INSCRIPTION ACHETEUR-->
 <div id="id02" class="modal">
-   <form class="modal-content animate" action="inscrireAcheteur.php" method="POST">
+ <form class="modal-content animate" action="inscrireAcheteur.php" method="POST">
 
-      <div class="imgcontainer">
-            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+  <div class="imgcontainer">
+    <!-- fermer le formulaire -->
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- icone en haut du formulaire -->
+    <img src="img/icone.png" alt="Avatar" class="avatar">
+  </div>
 
-      <div class="container">
-         <label for="Nom"><b>Nom</b></label><br>
-            <input type="text" placeholder="Nom" name="Nom" required><br>
+  <div class="container">
+   <label for="Nom"><b>Nom</b></label><br>
+   <input type="text" placeholder="Nom" name="Nom" required><br>
 
-            <label for="Prenom"><b>Prénom</b></label><br>
-            <input type="text" placeholder="Prénom" name="Prenom" required><br><br>
+   <label for="Prenom"><b>Prénom</b></label><br>
+   <input type="text" placeholder="Prénom" name="Prenom" required><br><br>
 
-            <label for="Identifiant"><b>Identifiant</b></label><br>
-            <input type="text" placeholder="Identifiant" name="Identifiant" required><br><br>
+   <label for="Identifiant"><b>Identifiant</b></label><br>
+   <input type="text" placeholder="Identifiant" name="Identifiant" required><br><br>
 
-            <label for="Email"><b>E-mail</b></label><br>
-            <input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
-            
-            <label for="MDP"><b>Mot de passe</b></label><br>
-            <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-            <button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
-      </div>
-    </form>
+   <label for="Email"><b>E-mail</b></label><br>
+   <input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
+
+   <label for="MDP"><b>Mot de passe</b></label><br>
+   <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
+
+   <!-- soumettre les infos au formulaire -->
+   <button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
+ </div>
+</form>
 </div>
 
 <!--FORMULAIRE D'INSCRIPTION VENDEUR-->
 <div id="id04" class="modal">
-   <form class="modal-content animate" action="inscrireVendeur.php" method="POST">
+ <form class="modal-content animate" action="inscrireVendeur.php" method="POST">
 
-      <div class="imgcontainer">
-            <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <img src="img/icone.png" alt="Avatar" class="avatar">
-      </div>
+  <div class="imgcontainer">
+    <!-- fermer le formulaire -->
+    <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <!-- icone en haut du formulaire -->
+    <img src="img/icone.png" alt="Avatar" class="avatar">
+  </div>
 
-      <div class="container">
-         <label for="Nom"><b>Nom</b></label><br>
-            <input type="text" placeholder="Nom" name="Nom" required><br>
+  <div class="container">
+   <label for="Nom"><b>Nom</b></label><br>
+   <input type="text" placeholder="Nom" name="Nom" required><br>
 
-            <label for="Prenom"><b>Prénom</b></label><br>
-            <input type="text" placeholder="Prénom" name="Prenom" required><br><br>
+   <label for="Prenom"><b>Prénom</b></label><br>
+   <input type="text" placeholder="Prénom" name="Prenom" required><br><br>
 
-            <label for="Pseudo"><b>Identifiant</b></label><br>
-            <input type="text" placeholder="Identifiant" name="Pseudo" required><br><br>
+   <label for="Pseudo"><b>Identifiant</b></label><br>
+   <input type="text" placeholder="Identifiant" name="Pseudo" required><br><br>
 
-            <label for="Email"><b>E-mail</b></label><br>
-            <input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
-            
-            <label for="MDP"><b>Mot de passe</b></label><br>
-            <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-            
-            <label for="Ville"><b>Ville</b></label><br>
-            <input type="text" placeholder="Ville" name="Ville" required><br><br>
-            
-            <label for="CP"><b>Code Postal</b></label><br>
-            <input type="text" placeholder="XX XXX" name="CP" required><br><br>
-            
-            <label for="Adresse"><b>Adresse</b></label><br>
-            <input type="text" placeholder="N° et rue" name="Adresse" required><br><br>
+   <label for="Email"><b>E-mail</b></label><br>
+   <input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
 
-            <label for="BIC"><b>RIB :</b></label><br>
-            <input type="text" placeholder="RIB" name="BIC" required><br><br>
-            
-            <label for="IBAN"><b>IBAN :</b></label><br>
-            <input type="text" placeholder="IBAN" name="IBAN" required><br><br>
+   <label for="MDP"><b>Mot de passe</b></label><br>
+   <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
 
-            <label for="Profil">Photo de profil</label><br>
-          <input type="file" name="Profil" required><br><br>
+   <label for="Ville"><b>Ville</b></label><br>
+   <input type="text" placeholder="Ville" name="Ville" required><br><br>
 
-          <label for="Fond">Photo de fond d'écran</label><br>
-          <input type="file" name="Fond" required><br><br>
-        
-            <button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
-      </div>
-    </form>
+   <label for="CP"><b>Code Postal</b></label><br>
+   <input type="text" placeholder="XX XXX" name="CP" required><br><br>
+
+   <label for="Adresse"><b>Adresse</b></label><br>
+   <input type="text" placeholder="N° et rue" name="Adresse" required><br><br>
+
+   <label for="BIC"><b>RIB :</b></label><br>
+   <input type="text" placeholder="RIB" name="BIC" required><br><br>
+
+   <label for="IBAN"><b>IBAN :</b></label><br>
+   <input type="text" placeholder="IBAN" name="IBAN" required><br><br>
+
+   <label for="Profil">Photo de profil</label><br>
+   <input type="file" name="Profil" required><br><br>
+
+   <label for="Fond">Photo de fond d'écran</label><br>
+   <input type="file" name="Fond" required><br><br>
+
+   <!-- soumettre les infos au formulaire -->
+   <button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
+ </div>
+</form>
 </div>
 
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+<!-- FOOTER -->
+<footer class="container">
+  <p class="float-right"><a href="#">Back to top</a></p>
+  <!-- pas encore codé -->
+  <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
 
 </html>

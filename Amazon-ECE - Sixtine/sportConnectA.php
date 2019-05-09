@@ -2,43 +2,47 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="img/favicon.ico">
 
-    <title>Amazon ECE</title>
+  <!-- bibliothèque et pages reliées -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-	<script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+  <title>Amazon ECE</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+  <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/carousel/">
 
-    <!-- Custom styles for this template -->
-    <link href="item.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
-    <style type="text/css">
-      #utilisateurconnecte{
-        margin-left: 100px;
-        font-size: 20px;
-        font-style: oblique;
-        color: white;
-        background-color: rgba(0, 0, 0, 0);
-      }
-    </style>
+  <!-- Custom styles for this template -->
+  <link href="item.css" rel="stylesheet">
+
+  <!-- mise en page -->
+  <style type="text/css">
+    #utilisateurconnecte{
+      margin-left: 100px;
+      font-size: 20px;
+      font-style: oblique;
+      color: white;
+      background-color: rgba(0, 0, 0, 0);
+    }
+  </style>
 
 
 </head>
 
 <body>
 
+  <!-- en tête du site -->
 	<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <a class="navbar-brand" href="connectPageAdmin.php">ECE Amazon</a>
@@ -52,6 +56,7 @@
 
         <ul class="navbar-nav ml-5">
           <li class="nav-item ml-4">
+            <!-- bouton déroulant -->
             <div class="dropdown">
               <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -62,84 +67,91 @@
               </div>
             </div>
           </li>
-            
+
           <li class="nav-item ml-4">
-              <a class="btn btn-secondary" href="ventesFadmin.php" role="button">Ventes Flash</a>
+            <!-- ventes flash -->
+            <a class="btn btn-secondary" href="ventesFadmin.php" role="button">Ventes Flash</a>
           </li>
 
           <li>
             <div id="utilisateurconnecte">
-            <?php
+              <!-- code php pour savoir qui est connecté -->
+              <?php
               $database = "AMAZON";
-  
+
               $db_handle = mysqli_connect('localhost', 'root', 'root');
               $db_found  = mysqli_select_db($db_handle, $database);
 
+              //si on trouve la database on execute
               if($db_found){
+                //on cherche dans la table admin
                 $sql = "SELECT * FROM Admin";
 
-                //on cherche le livre avec les paramètres titre et auteur
+                //on cherche qui est connecté
                 $sql .= " WHERE Connecte LIKE '%oui%'";
 
                 $result = mysqli_query($db_handle, $sql);
 
                 while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Bienvenu(e)  " . $data['Pseudo'] . " !";
+                  //on affiche le pseudo de l'admin connecté
+                  echo "Bienvenue  " . $data['Pseudo'] . " !";
                 }
               }
-            ?>
-            <p style="font-size: 14px;" >Connecté(e) en tant qu'admin</p>
+              ?>
+              <p style="font-size: 14px;" >Connecté(e) en tant qu'admin</p>
             </div>
           </li>
 
-          </ul>
-          <ul class="navbar-nav float-right">
-            <li class="nav-item ml-4">
-              <a href="deconnexion.php" class="btn btn-lg btn-info">Déconnexion  <span class="glyphicon glyphicon-log-out"></span></a>
-            </li>
-          </ul>
+        </ul>
+        <ul class="navbar-nav float-right">
+          <li class="nav-item ml-4">
+            <!-- deconnecter l'utilisateur connecté -->
+            <a href="deconnexion.php" class="btn btn-lg btn-info">Déconnexion  <span class="glyphicon glyphicon-log-out"></span></a>
+          </li>
+        </ul>
       </div>
     </nav>
-</header>
+  </header>
 
-<h1 id="livres">Sport</h1>
-<hr>
+  <h1 id="livres">Sport</h1>
+  <hr>
 
-<!--le code PHP --------->
-<table>
- 	
-<?php
+  <!--le code PHP --------->
+  <table>
+
+    <?php
 	//identifier le nom de base de données
-	$database = "AMAZON";
-	
+    $database = "AMAZON";
+
 	//connectez-vous dans votre BDD
 	//Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
-	$db_handle = mysqli_connect('localhost', 'root', 'root' );
-	$db_found = mysqli_select_db($db_handle, $database);
+    $db_handle = mysqli_connect('localhost', 'root', 'root' );
+    $db_found = mysqli_select_db($db_handle, $database);
 
 	//si le BDD existe, faire le traitement
-	if ($db_found) {
-		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Sport%'";
-		$result = mysqli_query($db_handle, $sql);
-		while ($data = mysqli_fetch_assoc($result)) {
- 
-			?>
+    if ($db_found) {
+      //on cherche tout les item de la catégorie sport et loisir
+      $sql = "SELECT * FROM Item WHERE Categorie LIKE '%Sport%'";
+      $result = mysqli_query($db_handle, $sql);
+      while ($data = mysqli_fetch_assoc($result)) {
 
-			<div class="row">
+       ?>
+       <!-- on affiche en html les articles trouvés -->
+       <div class="row">
         <div class="col-lg-4">
           <div class="zoom">
-              <div class="image">
-                <img src="img/<?php echo  $data['Photo1'];?>" >
-                <img src="img/<?php echo  $data['Photo2'];?>" >
-              </div>          
-          
+            <div class="image">
+              <img src="img/<?php echo  $data['Photo1'];?>" >
+              <img src="img/<?php echo  $data['Photo2'];?>" >
+            </div>          
+
             <div class="image">
               <img src="img/<?php echo  $data['Photo3'];?>" >
             </div>
           </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="row" id="titre">
             <?php echo  $data['Titre'] . '<br>';?>
           </div>
@@ -155,20 +167,21 @@
               <?php echo  $data['Vendeur'] . '<br>';?>
             </div>
           </div>
-           <div class="col">
-                     <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
-                  </div>
-        </div>
-        <div class="col-lg-2" id="droite">
-          <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
-          
-          <div class="row"><a class="btnPanier" href="deleteItem.php?id=<?php echo $data['Id']; ?>">Supprimer ce produit</a></div>
-        </div>
+          <div class="col">
+           <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
+         </div>
+       </div>
+       <div class="col-lg-3" id="droite">
+        <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
+
+        <!-- bouton pour supprimer l'article du site -->
+        <div class="row"><a class="btnPanier" href="deleteItem.php?id=<?php echo $data['Id']; ?>">Supprimer ce produit</a></div>
       </div>
+    </div>
 
-			<hr>
+    <hr>
 
-			<?php
+    <?php
 		}//end while
 	}//end if
 	
@@ -179,148 +192,15 @@
 
 	//fermer la connection
 	mysqli_close($db_handle);
-?>
+  ?>
 
 </table>
 
-<!--FORMULAIRE DE CONNECTION ACHETEUR-->
-<div id="id01" class="modal">
-  	<form class="modal-content animate" action="loginAcheteur.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Identifiant"><b>Nom d'utilisateur</b></label><br>
-      		<input type="text" placeholder="Nom d'utilisateur" name="Identifiant" required><br><br>
-
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-      		<button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-    		<label>
-        		<input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-      		</label><br>
-    	</div>
-    	<span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
-</div>
-
-<!--FORMULAIRE DE CONNECTION VENDEUR-->
-<div id="id03" class="modal">
-  	<form class="modal-content animate" action="loginVendeur.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Pseudo"><b>Nom d'utilisateur</b></label><br>
-      		<input type="text" placeholder="Nom d'utilisateur" name="Pseudo" required><br><br>
-
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
-      		<button class="submit" name="Login" type="submit">Se connecter</button><br><br>
-    		<label>
-        		<input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
-      		</label><br>
-    	</div>
-    	<span><a href="#">Mot de passe oublié ?</a></span>
-    </form>
-</div>
-
-<!--FORMULAIRE D'INSCRIPTION ACHETEUR-->
-<div id="id02" class="modal">
-  	<form class="modal-content animate" action="inscrireAcheteur.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Nom"><b>Nom</b></label><br>
-      		<input type="text" placeholder="Nom" name="Nom" required><br>
-
-      		<label for="Prenom"><b>Prénom</b></label><br>
-      		<input type="text" placeholder="Prénom" name="Prenom" required><br><br>
-
-      		<label for="Identifiant"><b>Identifiant</b></label><br>
-      		<input type="text" placeholder="Identifiant" name="Identifiant" required><br><br>
-
-      		<label for="Email"><b>E-mail</b></label><br>
-      		<input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
-      		
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-      		
-      		<label for="VilleU"><b>Ville</b></label><br>
-      		<input type="text" placeholder="Ville" name="VilleU" required><br><br>
-      		
-      		<label for="CPU"><b>Code Postal</b></label><br>
-      		<input type="text" placeholder="XX XXX" name="CPU" required><br><br>
-      		
-      		<label for="AdresseU"><b>Adresse</b></label><br>
-      		<input type="text" placeholder="N° et rue" name="AdresseU" required><br><br>
-        
-      		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
-    	</div>
-    </form>
-</div>
-
-<!--FORMULAIRE D'INSCRIPTION VENDEUR-->
-<div id="id04" class="modal">
-  	<form class="modal-content animate" action="inscrireVendeur.php" method="POST">
-
-  		<div class="imgcontainer">
-      		<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
-      		<img src="img/icone.png" alt="Avatar" class="avatar">
-    	</div>
-
-    	<div class="container">
-    		<label for="Nom"><b>Nom</b></label><br>
-      		<input type="text" placeholder="Nom" name="Nom" required><br>
-
-      		<label for="Prenom"><b>Prénom</b></label><br>
-      		<input type="text" placeholder="Prénom" name="Prenom" required><br><br>
-
-      		<label for="Pseudo"><b>Identifiant</b></label><br>
-      		<input type="text" placeholder="Identifiant" name="Pseudo" required><br><br>
-
-      		<label for="Email"><b>E-mail</b></label><br>
-      		<input type="text" placeholder="example@truc.fr/com" name="Email" required><br><br>
-      		
-      		<label for="MDP"><b>Mot de passe</b></label><br>
-      		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-      		
-      		<label for="Ville"><b>Ville</b></label><br>
-      		<input type="text" placeholder="Ville" name="Ville" required><br><br>
-      		
-      		<label for="CP"><b>Code Postal</b></label><br>
-      		<input type="text" placeholder="XX XXX" name="CP" required><br><br>
-      		
-      		<label for="Adresse"><b>Adresse</b></label><br>
-      		<input type="text" placeholder="N° et rue" name="Adresse" required><br><br>
-
-      		<label for="BIC"><b>RIB :</b></label><br>
-      		<input type="text" placeholder="RIB" name="BIC" required><br><br>
-      		
-      		<label for="IBAN"><b>IBAN :</b></label><br>
-      		<input type="text" placeholder="IBAN" name="IBAN" required><br><br>
-        
-      		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
-    	</div>
-    </form>
-</div>
-
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-right"><a href="#">Back to top</a></p>
-    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
+<!-- FOOTER -->
+<footer class="container">
+  <p class="float-right"><a href="#">Back to top</a></p>
+  <!-- pas encore codé -->
+  <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+</footer>
 
 </html>

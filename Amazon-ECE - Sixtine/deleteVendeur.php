@@ -12,7 +12,7 @@
 	if (isset($_POST["Create"])) {
 
 		if ($db_found) {
-
+            //On se place sur la ligne du vendeur en question
 			$sql = "SELECT * FROM Vendeur WHERE Pseudo LIKE '%$pseudo%'";
 			$result = mysqli_query($db_handle, $sql);
 
@@ -20,7 +20,7 @@
 				echo "Ce vendeur n'existe pas";
 			}
 			else{
-
+                //On supprime le vendeur
 				$sql = "DELETE FROM Vendeur WHERE Pseudo LIKE '$pseudo'";
 				$result = mysqli_query($db_handle, $sql);
 			?>

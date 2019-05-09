@@ -9,6 +9,8 @@
 
     <title>Amazon ECE</title>
 
+    <!-- bibliothèques et pages reliées -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -25,6 +27,7 @@
     <link href="mainPage.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="item.css">
 
+    <!-- mise en page -->
     <style type="text/css">
       #utilisateurconnecte{
         margin-left: 100px;
@@ -39,15 +42,17 @@
 
 <body>
 
+  <!-- bandeau de tête du site -->
 	<header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <!-- bouton lien pour revenir a la page principale -->
       <a class="navbar-brand" href="connectPageA.php">ECE Amazon</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
 
-
+      <!-- boutons déroulants -->
       <div class="collapse navbar-collapse" id="navbarCollapse">
 
         <ul class="navbar-nav ml-5">
@@ -63,12 +68,14 @@
             </div>
           </li>
             
+            <!-- bouton vers ventes flash -->
           <li class="nav-item ml-4">
               <a class="btn btn-secondary" href="ventesFconnect.php" role="button">Ventes Flash</a>
           </li>
 
           <li>
             <div id="utilisateurconnecte">
+              <!-- code php pour savoir qui est connecté -->
             <?php
               $database = "AMAZON";
   
@@ -76,15 +83,17 @@
               $db_found  = mysqli_select_db($db_handle, $database);
 
               if($db_found){
+                //si on trouve la database
                 $sql = "SELECT * FROM Acheteur";
 
-                //on cherche le livre avec les paramètres titre et auteur
+                //on cherche qui est connecté
                 $sql .= " WHERE Connecte LIKE '%oui%'";
 
                 $result = mysqli_query($db_handle, $sql);
 
                 while ($data = mysqli_fetch_assoc($result)) {
-                    echo "Bienvenu(e)  " . $data['Identifiant'] . " !";
+                  //on affiche l'identifiant de l'utilisateur connecté
+                    echo "Bienvenue  " . $data['Identifiant'] . " !";
                 }
               }
             ?>
@@ -95,15 +104,17 @@
           </ul>
           <ul class="navbar-nav float-right">
             <li class="nav-item ml-4">
+              <!-- bouton de deconnection qui renvoie a la page deconnexion.php -->
               <a href="deconnexion.php" class="btn btn-lg btn-info">Déconnexion  <span class="glyphicon glyphicon-log-out"></span></a>
             </li>
             <li class="nav-item ml-4">
+              <!-- bouton uqui renvoie au panier -->
               <a href="panierConnect.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
             </li>
           </ul>
       </div>
     </nav>
-</header>
+</header><!-- fin de l'en tête -->
 
 <h1 id="livres">Vêtements</h1>
 <hr>
@@ -122,12 +133,13 @@
 
 	//si le BDD existe, faire le traitement
 	if ($db_found) {
+    //on cherche les vêtements dans la base de données item
 		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Vetement%'";
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
  
 			?>
-
+      <!-- on affiche tous les vêtements -->
 			<div class="row">
         <div class="col-lg-4">
           <div class="zoom">
@@ -142,7 +154,7 @@
           </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="row" id="titre">
             <?php echo  $data['Titre'] . '<br>';?>
           </div>
@@ -162,9 +174,10 @@
                      <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
                   </div>
         </div>
-        <div class="col-lg-2" id="droite">
+        <div class="col-lg-3" id="droite">
           <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
           
+          <!-- bouton pour ajouter l'article au panier -->
           <div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
         </div>
       </div>
@@ -190,6 +203,7 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
+    <!-- lien pas reliés -->
     <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 

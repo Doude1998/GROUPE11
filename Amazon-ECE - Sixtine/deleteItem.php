@@ -1,5 +1,5 @@
 <?php
-
+//On envoie par id afin de travailler sur une  ligne de BDD
 $id = $_GET ['id'] ;
 $database = "AMAZON";
 //connectez-vous dans votre BDD
@@ -8,7 +8,7 @@ $db_handle = mysqli_connect('localhost', 'root', 'root' );
 $db_found = mysqli_select_db($db_handle, $database);
 
 if ($db_found) {
-
+            //On se place sur la ligne de la base en question
 			$sql = "SELECT * FROM Item WHERE Id LIKE '%$id%'";
 			$result = mysqli_query($db_handle, $sql);
 
@@ -17,9 +17,11 @@ if ($db_found) {
 			}
 			else{
 
+                //On efface un produit
 				$sql = "DELETE FROM Item WHERE Id LIKE '$id'";
 				$result = mysqli_query($db_handle, $sql);
 			?>
+                <!-- Conception de l'interface -->
                 <style type="text/css">
                     h2{
                         text-align: center;
@@ -49,10 +51,16 @@ if ($db_found) {
                 </style>
                 <h2>Produit supprimé.</h2>
 
-                
-                <div><a href="connectPageAdmin.php">Continuer</a></div>
-                
                 <?php
+                $sql = "SELECT * FROM Admin";
+                $sql .= " WHERE Connecte LIKE '%oui%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0){
+                    ?><div><a href="connectPageV.php">Continuer</a></div><?php
+                }else{
+                    ?><div><a href="connectPageAdmin.php">Continuer</a></div><?php
+                }    
+                
 			}
 
 		}//end if

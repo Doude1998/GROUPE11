@@ -9,6 +9,8 @@
 
     <title>Amazon ECE</title>
 
+    <!-- bibliothèques et pages reliées -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -29,6 +31,7 @@
 
 <body>
 
+  <!-- en tête du site -->
 	<header>
   	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     	<a class="navbar-brand" href="mainPage.html">ECE Amazon</a>
@@ -40,6 +43,7 @@
 
     		<ul class="navbar-nav ml-5">
 				<li class="nav-item ml-4">
+          <!-- bouton déroulant avec bootstrap -->
         			<div class="dropdown">
   						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories</a>
 		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -52,10 +56,12 @@
         		</li>
         		
         		<li class="nav-item ml-4">
+              <!-- bouton normal vers ventes flash -->
               <a class="btn btn-secondary" href="ventesF.php" role="button">Ventes Flash</a>
             </li>
 
         		<li class="nav-item ml-4">
+              <!-- bouton déroulant -->
         			<div class="dropdown">
   						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Vendre</a>
 		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -65,6 +71,7 @@
 					</div>
         		</li>
         		<li class="nav-item ml-4">
+              <!-- bouton déroulant -->
         			<div class="dropdown">
   						<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Votre compte</a>
 		  				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -76,15 +83,17 @@
         	</ul>
         	<ul class="navbar-nav float-right">
         		<li class="nav-item">
+              <!-- bouton pour se connecter en tant qu'admin -->
               <a onclick="document.getElementById('id05').style.display='block'" class="btn btn-lg btn-info">Admin <span class="glyphicon glyphicon-user"></span></a>
             </li>
         		<li class="nav-item ml-4">
+              <!-- bouton qui renvoie au panier -->
         			<a href="panier.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-shopping-cart"></span></a>
         		</li>
         	</ul>
     	</div>
   	</nav>
-</header>
+</header><!-- fin de l'en tête -->
 
 <h1 id="livres">Vêtements</h1>
 <hr>
@@ -103,12 +112,13 @@
 
 	//si le BDD existe, faire le traitement
 	if ($db_found) {
+    //on cherche tous les vêtements
 		$sql = "SELECT * FROM Item WHERE Categorie LIKE '%Vetement%'";
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
  
 			?>
-
+      <!-- on affiche tous les vêtements -->
 			<div class="row">
         <div class="col-lg-4">
           <div class="zoom">
@@ -123,7 +133,7 @@
           </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="row" id="titre">
             <?php echo  $data['Titre'] . '<br>';?>
           </div>
@@ -143,9 +153,10 @@
                      <?php echo  "Stock: " .$data ['Stock'] .'<br>';?>
                   </div>
         </div>
-        <div class="col-lg-2" id="droite">
+        <div class="col-lg-3" id="droite">
           <div class="row" id="prix"><?php echo  $data['Prix'] . " €" . '<br>';?></div>
           
+          <!-- bouton pour ajouter au panier -->
           <div class="row"><a class="btnPanier" href="ajoutPanier.php?id=<?php echo $data['Id']; ?>">Ajouter au panier</a></div>
         </div>
       </div>
@@ -183,11 +194,14 @@
       		<label for="MDP"><b>Mot de passe</b></label><br>
       		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
         
+          <!-- bouton pour soumettre les infos au formulaire -->
       		<button class="submit" name="Login" type="submit">Se connecter</button><br><br>
     		<label>
+          <!-- pas encore codé -->
         		<input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
       		</label><br>
     	</div>
+      <!-- pas encore codé -->
     	<span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
@@ -197,6 +211,7 @@
   	<form class="modal-content animate" action="loginVendeur.php" method="POST">
 
   		<div class="imgcontainer">
+        <!-- bouton pour fermer le formulaire -->
       		<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
       		<img src="img/icone.png" alt="Avatar" class="avatar">
     	</div>
@@ -208,11 +223,14 @@
       		<label for="MDP"><b>Mot de passe</b></label><br>
       		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
         
+          <!-- soumettre les infos au formulaire -->
       		<button class="submit" name="Login" type="submit">Se connecter</button><br><br>
     		<label>
+          <!-- pas encore codé -->
         		<input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
       		</label><br>
     	</div>
+      <!-- pas encore codé -->
     	<span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
@@ -222,6 +240,7 @@
     <form class="modal-content animate" action="loginAdmin.php" method="POST">
 
       <div class="imgcontainer">
+        <!-- bouton pour fermer le formulaire et afficher une image en haut du formulaire -->
           <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Modal">&times;</span>
           <img src="img/icone.png" alt="Avatar" class="avatar">
       </div>
@@ -232,12 +251,15 @@
 
           <label for="MDP"><b>Mot de passe</b></label><br>
           <input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
-        
+          
+          <!-- soumettre les infos au formulaire -->
           <button class="submit" name="Login" type="submit">Se connecter</button><br><br>
         <label>
+          <!-- pas encore codé -->
             <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
           </label><br>
       </div>
+      <!-- pas encore codé -->
       <span><a href="#">Mot de passe oublié ?</a></span>
     </form>
 </div>
@@ -247,6 +269,7 @@
   	<form class="modal-content animate" action="inscrireAcheteur.php" method="POST">
 
   		<div class="imgcontainer">
+        <!-- bouton pour fermer le formulaire et image en haut du formulaire -->
       		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
       		<img src="img/icone.png" alt="Avatar" class="avatar">
     	</div>
@@ -267,6 +290,7 @@
       		<label for="MDP"><b>Mot de passe</b></label><br>
       		<input type="password" placeholder="Mot de passe" name="MDP" required><br><br>
         
+          <!-- soumettre les infos au formulaire -->
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>
     </form>
@@ -277,6 +301,7 @@
   	<form class="modal-content animate" action="inscrireVendeur.php" method="POST">
 
   		<div class="imgcontainer">
+        <!-- bouton pour fermer le formulaire et icone en haut du formulaire -->
       		<span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
       		<img src="img/icone.png" alt="Avatar" class="avatar">
     	</div>
@@ -318,6 +343,7 @@
           <label for="Fond">Photo de fond d'écran</label><br>
           <input type="file" name="Fond" required><br><br>
         
+          <!-- soumettre les infos au formulaire -->
       		<button class="submit" name="Create" type="submit">Créer un compte</button><br><br>
     	</div>
     </form>
@@ -326,6 +352,7 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-right"><a href="#">Back to top</a></p>
+    <!-- pas encore relié -->
     <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
 

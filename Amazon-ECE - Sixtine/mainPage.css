@@ -1,40 +1,45 @@
+/* mise en page de la page globale */
 body{
-	font-family: Arial, Helvetica, sans-serif;
-	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif; /* style de police */
+	margin: 0px; 
 	padding: 0px;
-	background: #C8D8EA;
+	background: #C8D8EA; /* couleur du fond d'écran */
 }
 
+/* pour les images rondes des catégories */
 .ronds{
-	border-radius: 50%;
-	border: solid 8px #353E47;
-  width: 250px;
+	border-radius: 50%; /* arrondir les images */
+	border: solid 8px #353E47; /* faire une bordure autour des images */
+  /* taille */
+  width: 250px; 
   height: 250px;
 }
 
+/* chager la sourie quand elle passe sur les boutons */
 .row a {
 	cursor: pointer;
 }
 
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-	    font-size: 3.5rem;
-    }
+  .bd-placeholder-img-lg {
+   font-size: 3.5rem;
+ }
 }
 
 .btn {
-	padding: 15px;
+	padding: 15px; /* marge autour du text à l'intérieur des boutons */
 }
 
+/* aligner le text */
 .col-lg-6 {
 	text-align: center;
 }
@@ -60,12 +65,12 @@ body{
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  	box-sizing: border-box;
-  	width: 25%;
-  	padding: 12px 20px;
-  	margin: 8px 0;
-  	display: inline-block;
-  	border: 1px solid #ccc;
+ box-sizing: border-box;
+ width: 25%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
+ border: 1px solid #ccc;
 }
 
 /* Extra styles for the cancel button */
@@ -134,6 +139,7 @@ img.avatar {
   border-radius: 16px;
 }
 
+/* mettre un filtre quand on passe la sourie sur le bouton */
 #login:hover {
   background-color: #f1f1f1;
 }
@@ -142,7 +148,7 @@ img.avatar {
   from {-webkit-transform: scale(0)} 
   to {-webkit-transform: scale(1)}
 }
-  
+
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
@@ -151,12 +157,12 @@ img.avatar {
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
+   display: block;
+   float: none;
+ }
+ .cancelbtn {
+   width: 100%;
+ }
 }
 
 .overlay-image .hover {
@@ -184,8 +190,8 @@ img.avatar {
 }
 
 .text {
-  color: white;
-  font-size: 35px;
+  color: white; /* couleur du texte */
+  font-size: 35px; /* taille du texte */
   position: absolute;
   top: 50%;
   left: 50%;

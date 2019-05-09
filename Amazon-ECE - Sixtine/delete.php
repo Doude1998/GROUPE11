@@ -1,5 +1,5 @@
 <?php
-
+//On envoie par Id afin de pouvoir se placer dans la correct ligne de notre tablel
 $id = $_GET ['id'] ;
 $database = "AMAZON";
 //connectez-vous dans votre BDD
@@ -16,7 +16,7 @@ if ($db_found) {
 		$sql = "SELECT * FROM Item WHERE Id LIKE '%$id%'";
 		$result = mysqli_query($db_handle, $sql);
 		while ($data = mysqli_fetch_assoc($result)) {
- 
+ //On jongle entre PHP et Html pour generer un affichage correct de nos tables
 			?>
 			<div class="row" id="test">
 				<div class="col-lg-3">
@@ -81,6 +81,7 @@ if ($db_found) {
 ?>
 
 <?php
+//On ouvre un deuxieme php pour travailler sur l'autre table
 $database = "AMAZON";
 //connectez-vous dans votre BDD
 //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien)
@@ -91,6 +92,7 @@ $db_found = mysqli_select_db($db_handle, $database);
 
 if ($db_found) {
 
+		//On se place dans la ligne du tableau qu'il faut
 		$sql = "SELECT * FROM contact WHERE Id LIKE '%$id%'";
 		$result = mysqli_query($db_handle, $sql);
 
@@ -103,17 +105,16 @@ if ($db_found) {
   		$sql2 = "UPDATE Item SET NombreVente = '$nbvente' WHERE Id = '$id' ";
   		$result = mysqli_query($db_handle, $sql2);
 
-
+  		//Boucle afin de decrementer les quantites
 		if($quantite > 1)
 		{
 			$quantite = $quantite - 1;
-			echo $quantite;
 
 			$sql1 = "UPDATE contact SET Quantite = '$quantite' WHERE Id = '$id' ";
   			$result = mysqli_query($db_handle, $sql1);
 		}
 		else { 
-			
+				//suppression du produit quand il est plus dans le panier
 				$sql = "DELETE FROM contact WHERE Id LIKE '$id'";
 
 
@@ -121,12 +122,22 @@ if ($db_found) {
 
 		$result = mysqli_query($db_handle, $sql);
 
-		
+		//variable de stocks avec update en temps réel		
 		$stock = $stock + 1;
 		$sql1 = "UPDATE Item SET Stock = '$stock' WHERE Id = '$id' ";
   		$result = mysqli_query($db_handle, $sql1);
 
-  header('location: panier.php');
+
+                $sql = "SELECT * FROM Acheteur";
+                $sql .= " WHERE Connecte LIKE '%oui%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0){
+                    header('location: panier.php');
+                }else{
+                	header('Location: panierConnect.php');
+                }
+
+  		
 
 	}//end if
 	
